@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */; };
+		2C83FE141D4F7BB900DB1F86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE131D4F7BB900DB1F86 /* ViewController.swift */; };
+		2C83FE171D4F7BB900DB1F86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE151D4F7BB900DB1F86 /* Main.storyboard */; };
+		2C83FE191D4F7BB900DB1F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */; };
+		2C83FE1C1D4F7BB900DB1F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */; };
+		2C83FE271D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE261D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift */; };
+		2C83FE321D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C83FE231D4F7BB900DB1F86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C83FE061D4F7BB900DB1F86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C83FE0D1D4F7BB900DB1F86;
+			remoteInfo = DiscountAsciiWerehouse;
+		};
+		2C83FE2E1D4F7BB900DB1F86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C83FE061D4F7BB900DB1F86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C83FE0D1D4F7BB900DB1F86;
+			remoteInfo = DiscountAsciiWerehouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C83FE0E1D4F7BB900DB1F86 /* DiscountAsciiWerehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountAsciiWerehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2C83FE131D4F7BB900DB1F86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C83FE161D4F7BB900DB1F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C83FE1B1D4F7BB900DB1F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2C83FE1D1D4F7BB900DB1F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C83FE221D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscountAsciiWerehouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C83FE261D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountAsciiWerehouseTests.swift; sourceTree = "<group>"; };
+		2C83FE281D4F7BB900DB1F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C83FE2D1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscountAsciiWerehouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountAsciiWerehouseUITests.swift; sourceTree = "<group>"; };
+		2C83FE331D4F7BB900DB1F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C83FE0B1D4F7BB900DB1F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE1F1D4F7BB900DB1F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE2A1D4F7BB900DB1F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C83FE051D4F7BB900DB1F86 = {
+			isa = PBXGroup;
+			children = (
+				2C83FE101D4F7BB900DB1F86 /* DiscountAsciiWerehouse */,
+				2C83FE251D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests */,
+				2C83FE301D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests */,
+				2C83FE0F1D4F7BB900DB1F86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C83FE0F1D4F7BB900DB1F86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE0E1D4F7BB900DB1F86 /* DiscountAsciiWerehouse.app */,
+				2C83FE221D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.xctest */,
+				2C83FE2D1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C83FE101D4F7BB900DB1F86 /* DiscountAsciiWerehouse */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */,
+				2C83FE131D4F7BB900DB1F86 /* ViewController.swift */,
+				2C83FE151D4F7BB900DB1F86 /* Main.storyboard */,
+				2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */,
+				2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */,
+				2C83FE1D1D4F7BB900DB1F86 /* Info.plist */,
+			);
+			path = DiscountAsciiWerehouse;
+			sourceTree = "<group>";
+		};
+		2C83FE251D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE261D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift */,
+				2C83FE281D4F7BB900DB1F86 /* Info.plist */,
+			);
+			path = DiscountAsciiWerehouseTests;
+			sourceTree = "<group>";
+		};
+		2C83FE301D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */,
+				2C83FE331D4F7BB900DB1F86 /* Info.plist */,
+			);
+			path = DiscountAsciiWerehouseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C83FE0D1D4F7BB900DB1F86 /* DiscountAsciiWerehouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C83FE361D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouse" */;
+			buildPhases = (
+				2C83FE0A1D4F7BB900DB1F86 /* Sources */,
+				2C83FE0B1D4F7BB900DB1F86 /* Frameworks */,
+				2C83FE0C1D4F7BB900DB1F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiscountAsciiWerehouse;
+			productName = DiscountAsciiWerehouse;
+			productReference = 2C83FE0E1D4F7BB900DB1F86 /* DiscountAsciiWerehouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C83FE211D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C83FE391D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseTests" */;
+			buildPhases = (
+				2C83FE1E1D4F7BB900DB1F86 /* Sources */,
+				2C83FE1F1D4F7BB900DB1F86 /* Frameworks */,
+				2C83FE201D4F7BB900DB1F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C83FE241D4F7BB900DB1F86 /* PBXTargetDependency */,
+			);
+			name = DiscountAsciiWerehouseTests;
+			productName = DiscountAsciiWerehouseTests;
+			productReference = 2C83FE221D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C83FE2C1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C83FE3C1D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseUITests" */;
+			buildPhases = (
+				2C83FE291D4F7BB900DB1F86 /* Sources */,
+				2C83FE2A1D4F7BB900DB1F86 /* Frameworks */,
+				2C83FE2B1D4F7BB900DB1F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C83FE2F1D4F7BB900DB1F86 /* PBXTargetDependency */,
+			);
+			name = DiscountAsciiWerehouseUITests;
+			productName = DiscountAsciiWerehouseUITests;
+			productReference = 2C83FE2D1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C83FE061D4F7BB900DB1F86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Matheus Ruschel";
+				TargetAttributes = {
+					2C83FE0D1D4F7BB900DB1F86 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					2C83FE211D4F7BB900DB1F86 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 2C83FE0D1D4F7BB900DB1F86;
+					};
+					2C83FE2C1D4F7BB900DB1F86 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 2C83FE0D1D4F7BB900DB1F86;
+					};
+				};
+			};
+			buildConfigurationList = 2C83FE091D4F7BB900DB1F86 /* Build configuration list for PBXProject "DiscountAsciiWerehouse" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C83FE051D4F7BB900DB1F86;
+			productRefGroup = 2C83FE0F1D4F7BB900DB1F86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C83FE0D1D4F7BB900DB1F86 /* DiscountAsciiWerehouse */,
+				2C83FE211D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests */,
+				2C83FE2C1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C83FE0C1D4F7BB900DB1F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C83FE1C1D4F7BB900DB1F86 /* LaunchScreen.storyboard in Resources */,
+				2C83FE191D4F7BB900DB1F86 /* Assets.xcassets in Resources */,
+				2C83FE171D4F7BB900DB1F86 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE201D4F7BB900DB1F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE2B1D4F7BB900DB1F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C83FE0A1D4F7BB900DB1F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C83FE141D4F7BB900DB1F86 /* ViewController.swift in Sources */,
+				2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE1E1D4F7BB900DB1F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C83FE271D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C83FE291D4F7BB900DB1F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C83FE321D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C83FE241D4F7BB900DB1F86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C83FE0D1D4F7BB900DB1F86 /* DiscountAsciiWerehouse */;
+			targetProxy = 2C83FE231D4F7BB900DB1F86 /* PBXContainerItemProxy */;
+		};
+		2C83FE2F1D4F7BB900DB1F86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C83FE0D1D4F7BB900DB1F86 /* DiscountAsciiWerehouse */;
+			targetProxy = 2C83FE2E1D4F7BB900DB1F86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C83FE151D4F7BB900DB1F86 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C83FE161D4F7BB900DB1F86 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C83FE1B1D4F7BB900DB1F86 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C83FE341D4F7BB900DB1F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2C83FE351D4F7BB900DB1F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C83FE371D4F7BB900DB1F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DiscountAsciiWerehouse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2C83FE381D4F7BB900DB1F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DiscountAsciiWerehouse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2C83FE3A1D4F7BB900DB1F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DiscountAsciiWerehouseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscountAsciiWerehouse.app/DiscountAsciiWerehouse";
+			};
+			name = Debug;
+		};
+		2C83FE3B1D4F7BB900DB1F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DiscountAsciiWerehouseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscountAsciiWerehouse.app/DiscountAsciiWerehouse";
+			};
+			name = Release;
+		};
+		2C83FE3D1D4F7BB900DB1F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DiscountAsciiWerehouseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DiscountAsciiWerehouse;
+			};
+			name = Debug;
+		};
+		2C83FE3E1D4F7BB900DB1F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DiscountAsciiWerehouseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matheus.tasks.DiscountAsciiWerehouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DiscountAsciiWerehouse;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C83FE091D4F7BB900DB1F86 /* Build configuration list for PBXProject "DiscountAsciiWerehouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C83FE341D4F7BB900DB1F86 /* Debug */,
+				2C83FE351D4F7BB900DB1F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C83FE361D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C83FE371D4F7BB900DB1F86 /* Debug */,
+				2C83FE381D4F7BB900DB1F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C83FE391D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C83FE3A1D4F7BB900DB1F86 /* Debug */,
+				2C83FE3B1D4F7BB900DB1F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C83FE3C1D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C83FE3D1D4F7BB900DB1F86 /* Debug */,
+				2C83FE3E1D4F7BB900DB1F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C83FE061D4F7BB900DB1F86 /* Project object */;
+}
