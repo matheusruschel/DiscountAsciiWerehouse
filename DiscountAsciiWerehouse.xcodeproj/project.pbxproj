@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */; };
-		2C83FE141D4F7BB900DB1F86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE131D4F7BB900DB1F86 /* ViewController.swift */; };
 		2C83FE171D4F7BB900DB1F86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE151D4F7BB900DB1F86 /* Main.storyboard */; };
 		2C83FE191D4F7BB900DB1F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */; };
 		2C83FE1C1D4F7BB900DB1F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */; };
 		2C83FE271D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE261D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift */; };
 		2C83FE321D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */; };
+		2C83FE421D4F825300DB1F86 /* ASCProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */; };
+		2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */; };
+		2C83FE471D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */; };
+		2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */; };
+		2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */; };
+		2C83FE501D4F94D600DB1F86 /* ASCAsciiProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4F1D4F94D600DB1F86 /* ASCAsciiProduct.swift */; };
+		2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE511D4F966D00DB1F86 /* Wrapper.swift */; };
+		2C83FE551D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */; };
+		2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +44,6 @@
 /* Begin PBXFileReference section */
 		2C83FE0E1D4F7BB900DB1F86 /* DiscountAsciiWerehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountAsciiWerehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C83FE131D4F7BB900DB1F86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C83FE161D4F7BB900DB1F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C83FE1B1D4F7BB900DB1F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +54,15 @@
 		2C83FE2D1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscountAsciiWerehouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountAsciiWerehouseUITests.swift; sourceTree = "<group>"; };
 		2C83FE331D4F7BB900DB1F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsViewController.swift; sourceTree = "<group>"; };
+		2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCProductsCollectionViewCell.xib; sourceTree = "<group>"; };
+		2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
+		2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2C83FE4F1D4F94D600DB1F86 /* ASCAsciiProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAsciiProduct.swift; sourceTree = "<group>"; };
+		2C83FE511D4F966D00DB1F86 /* Wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAsciiProductViewModel.swift; sourceTree = "<group>"; };
+		2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAPICommunicationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +113,11 @@
 		2C83FE101D4F7BB900DB1F86 /* DiscountAsciiWerehouse */ = {
 			isa = PBXGroup;
 			children = (
+				2C83FE4C1D4F8DEA00DB1F86 /* Util */,
+				2C83FE3F1D4F7FE800DB1F86 /* Model */,
+				2C83FE531D4F9E8300DB1F86 /* ViewModel */,
+				2C83FE401D4F800500DB1F86 /* ViewController */,
 				2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */,
-				2C83FE131D4F7BB900DB1F86 /* ViewController.swift */,
 				2C83FE151D4F7BB900DB1F86 /* Main.storyboard */,
 				2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */,
 				2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */,
@@ -123,6 +142,67 @@
 				2C83FE331D4F7BB900DB1F86 /* Info.plist */,
 			);
 			path = DiscountAsciiWerehouseUITests;
+			sourceTree = "<group>";
+		};
+		2C83FE3F1D4F7FE800DB1F86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE4F1D4F94D600DB1F86 /* ASCAsciiProduct.swift */,
+				2C83FE511D4F966D00DB1F86 /* Wrapper.swift */,
+				2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2C83FE401D4F800500DB1F86 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE431D4F846F00DB1F86 /* ProductsGrid */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		2C83FE431D4F846F00DB1F86 /* ProductsGrid */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */,
+				2C83FE491D4F8C2900DB1F86 /* Layout */,
+				2C83FE481D4F84AF00DB1F86 /* Cell */,
+			);
+			name = ProductsGrid;
+			sourceTree = "<group>";
+		};
+		2C83FE481D4F84AF00DB1F86 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */,
+				2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		2C83FE491D4F8C2900DB1F86 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		2C83FE4C1D4F8DEA00DB1F86 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		2C83FE531D4F9E8300DB1F86 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C83FE471D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib in Resources */,
 				2C83FE1C1D4F7BB900DB1F86 /* LaunchScreen.storyboard in Resources */,
 				2C83FE191D4F7BB900DB1F86 /* Assets.xcassets in Resources */,
 				2C83FE171D4F7BB900DB1F86 /* Main.storyboard in Resources */,
@@ -256,8 +337,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C83FE141D4F7BB900DB1F86 /* ViewController.swift in Sources */,
+				2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */,
+				2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */,
+				2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */,
+				2C83FE421D4F825300DB1F86 /* ASCProductsViewController.swift in Sources */,
 				2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */,
+				2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */,
+				2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */,
+				2C83FE551D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift in Sources */,
+				2C83FE501D4F94D600DB1F86 /* ASCAsciiProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
