@@ -30,6 +30,7 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout {
         minimumInteritemSpacing = 1
         minimumLineSpacing = 1
         scrollDirection = .Vertical
+        self.headerReferenceSize = CGSize(width: 50.0,height: 50.0)
     }
     
     /// here we define the width of each cell, creating a 2 column layout. In case you would create 3 columns, change the number 2 to 3

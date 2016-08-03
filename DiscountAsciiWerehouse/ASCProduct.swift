@@ -9,23 +9,19 @@
 import Foundation
 
 
-struct ASCAsciiProduct {
+struct ASCProduct {
     
-    var id: String
-    var type: String
-    var face: String
-    var size: Int
-    var price: Float
-    var stock: Int
-    var tags: [String]
-    
-    func allProducts() -> [ASCAsciiProduct] {
-        return [ASCAsciiProduct(data:"=-)")!]
-    }
+    var id: String?
+    var type: String?
+    var face: String?
+    var size: Int?
+    var price: Float?
+    var stock: Int?
+    var tags: [String]?
     
 }
 
-extension ASCAsciiProduct : Wrappable {
+extension ASCProduct : Wrappable {
     
     init?(data: AnyObject) {
         

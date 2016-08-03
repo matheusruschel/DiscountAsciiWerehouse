@@ -8,18 +8,21 @@
 
 import Foundation
 
-protocol AsciiProductCoordinatorDelegate {
+protocol ProductCoordinatorDelegate {
     
-    func coordinatorDidFinishLoadingProducts(viewModel: ASCAsciiProductViewModel, sucess:Bool,errorMsg: String?)
+    func coordinatorDidFinishLoadingProducts(viewModel: ASCProductViewModel, sucess:Bool,errorMsg: String?)
 }
 
 
-class ASCAsciiProductViewModel {
+class ASCProductViewModel {
     
-    var delegate: AsciiProductCoordinatorDelegate?
+    var delegate: ProductCoordinatorDelegate?
+    var products: [ASCProduct]?
+    let productsAPI = ASCProductsAPI()
     
     func loadProducts() {
         
+        productsAPI.fetchProducts([:],completion: { products in print(products)})
         delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
     }
     
