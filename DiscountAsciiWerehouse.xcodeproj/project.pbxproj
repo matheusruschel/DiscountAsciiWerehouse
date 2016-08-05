@@ -13,14 +13,14 @@
 		2C83FE1C1D4F7BB900DB1F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE1A1D4F7BB900DB1F86 /* LaunchScreen.storyboard */; };
 		2C83FE271D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE261D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests.swift */; };
 		2C83FE321D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */; };
-		2C83FE421D4F825300DB1F86 /* ASCProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */; };
+		2C83FE421D4F825300DB1F86 /* ASCProductsGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */; };
 		2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */; };
 		2C83FE471D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */; };
 		2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */; };
 		2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */; };
 		2C83FE501D4F94D600DB1F86 /* ASCProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */; };
 		2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE511D4F966D00DB1F86 /* Wrapper.swift */; };
-		2C83FE551D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */; };
+		2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE541D4F9EE000DB1F86 /* ASCProductsViewModel.swift */; };
 		2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */; };
 		2C83FE591D50142D00DB1F86 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE581D50142D00DB1F86 /* Error.swift */; };
 		2C83FE5B1D510BED00DB1F86 /* NDJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE5A1D510BED00DB1F86 /* NDJSONParser.swift */; };
@@ -35,6 +35,8 @@
 		2C83FE721D52832500DB1F86 /* ASCHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE701D52832500DB1F86 /* ASCHeaderCollectionReusableView.xib */; };
 		2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */; };
 		2C83FE791D52954C00DB1F86 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */; };
+		2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */; };
+		2C9EFD141D55282300F7E106 /* CustomBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,14 +69,14 @@
 		2C83FE2D1D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscountAsciiWerehouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C83FE311D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountAsciiWerehouseUITests.swift; sourceTree = "<group>"; };
 		2C83FE331D4F7BB900DB1F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsViewController.swift; sourceTree = "<group>"; };
+		2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsGridViewController.swift; sourceTree = "<group>"; };
 		2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCProductsCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProduct.swift; sourceTree = "<group>"; };
 		2C83FE511D4F966D00DB1F86 /* Wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
-		2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAsciiProductViewModel.swift; sourceTree = "<group>"; };
+		2C83FE541D4F9EE000DB1F86 /* ASCProductsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsViewModel.swift; sourceTree = "<group>"; };
 		2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAPICommunicationModel.swift; sourceTree = "<group>"; };
 		2C83FE581D50142D00DB1F86 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2C83FE5A1D510BED00DB1F86 /* NDJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDJSONParser.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		2C83FE701D52832500DB1F86 /* ASCHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductDetailViewController.swift; sourceTree = "<group>"; };
 		2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsFetchingController.swift; sourceTree = "<group>"; };
+		2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +196,8 @@
 		2C83FE431D4F846F00DB1F86 /* ProductsGridCollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE411D4F825300DB1F86 /* ASCProductsViewController.swift */,
+				2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */,
+				2C83FE731D5283C600DB1F86 /* ReusableView */,
 				2C83FE481D4F84AF00DB1F86 /* Cell */,
 				2C83FE491D4F8C2900DB1F86 /* Layout */,
 			);
@@ -213,7 +218,6 @@
 		2C83FE491D4F8C2900DB1F86 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE731D5283C600DB1F86 /* ReusableView */,
 				2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */,
 			);
 			name = Layout;
@@ -234,7 +238,7 @@
 		2C83FE531D4F9E8300DB1F86 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE541D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift */,
+				2C83FE541D4F9EE000DB1F86 /* ASCProductsViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -254,6 +258,7 @@
 				2C83FE5C1D5118E100DB1F86 /* ASCServerSettings.swift */,
 				2C83FE611D522AA000DB1F86 /* ASCProductsAPI.swift */,
 				2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */,
+				2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 		2C83FE681D525B2300DB1F86 /* SearchBarController */ = {
 			isa = PBXGroup;
 			children = (
+				2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */,
 				2C83FE691D525B5700DB1F86 /* ASCCustomSearchBar.swift */,
 				2C83FE6B1D525D8D00DB1F86 /* ASCCustomSearchController.swift */,
 			);
@@ -421,10 +427,12 @@
 				2C83FE6A1D525B5700DB1F86 /* ASCCustomSearchBar.swift in Sources */,
 				2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */,
 				2C83FE5D1D5118E100DB1F86 /* ASCServerSettings.swift in Sources */,
+				2C9EFD141D55282300F7E106 /* CustomBarDelegate.swift in Sources */,
 				2C83FE5F1D51191D00DB1F86 /* ASCUrlBuilder.swift in Sources */,
 				2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */,
+				2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */,
 				2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */,
-				2C83FE421D4F825300DB1F86 /* ASCProductsViewController.swift in Sources */,
+				2C83FE421D4F825300DB1F86 /* ASCProductsGridViewController.swift in Sources */,
 				2C83FE5B1D510BED00DB1F86 /* NDJSONParser.swift in Sources */,
 				2C83FE6C1D525D8D00DB1F86 /* ASCCustomSearchController.swift in Sources */,
 				2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */,
@@ -433,7 +441,7 @@
 				2C83FE661D52557E00DB1F86 /* ASCLoadingCollectionViewCell.swift in Sources */,
 				2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */,
 				2C83FE711D52832500DB1F86 /* ASCHeaderCollectionReusableView.swift in Sources */,
-				2C83FE551D4F9EE000DB1F86 /* ASCAsciiProductViewModel.swift in Sources */,
+				2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */,
 				2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */,
 				2C83FE591D50142D00DB1F86 /* Error.swift in Sources */,
 				2C83FE791D52954C00DB1F86 /* UIFont+Extension.swift in Sources */,
@@ -662,6 +670,7 @@
 				2C83FE381D4F7BB900DB1F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C83FE391D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseTests" */ = {
 			isa = XCConfigurationList;
@@ -670,6 +679,7 @@
 				2C83FE3B1D4F7BB900DB1F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C83FE3C1D4F7BB900DB1F86 /* Build configuration list for PBXNativeTarget "DiscountAsciiWerehouseUITests" */ = {
 			isa = XCConfigurationList;
@@ -678,6 +688,7 @@
 				2C83FE3E1D4F7BB900DB1F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

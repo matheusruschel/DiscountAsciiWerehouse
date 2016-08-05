@@ -28,11 +28,11 @@ extension UIColor {
     
     static func colorPalette() -> [UIColor] {
         
-        return [UIColor(netHex: 0xD1F2A5),
-                UIColor(netHex: 0xEFFAB4),
-                UIColor(netHex: 0xFFC48C),
-                UIColor(netHex: 0xFF9F80),
-                UIColor(netHex: 0xF56991)]
+        return [UIColor(netHex: 0xE8F3F8),
+                UIColor(netHex: 0xDBE6EC),
+                UIColor(netHex: 0xC2CBCE),
+                UIColor(netHex: 0xA4BCC2),
+                UIColor(netHex: 0x81A8B8)]
         
     }
     

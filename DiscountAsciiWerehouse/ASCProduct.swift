@@ -11,19 +11,19 @@ import Foundation
 
 struct ASCProduct {
     
-    var id: String?
-    var type: String?
-    var face: String?
-    var size: Int?
-    var price: Float?
-    var stock: Int?
-    var tags: [String]?
+    var id: String
+    var type: String
+    var face: String
+    var size: Int
+    var price: Float
+    var stock: Int
+    var tags: [String]
     
 }
 
 extension ASCProduct : Wrappable {
     
-    init?(data: AnyObject) {
+     init?(data: AnyObject) {
         
         guard
             let id   = data["id"] as? String,
@@ -36,13 +36,9 @@ extension ASCProduct : Wrappable {
                 return nil
         }
         
-        self.id = id
-        self.type = type
-        self.face = face
-        self.size = size
-        self.price = price
-        self.stock = stock
-        self.tags = tags
+        price
+        
+        self.init(id:id, type:type, face:face , size:size, price:price, stock: stock, tags: tags)
     }
     
 }

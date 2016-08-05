@@ -15,14 +15,14 @@ enum PARAM : String {
 class ASCUrlBuilder {
     
     let acceptedParamKeys = [PARAM.SearchTerm, .Skip, .OnlyInStock, .Limit]
-    let params = [String:AnyObject]()
+    var params = [PARAM:AnyObject]()
     var finalUrl: String {
 
-        var finalUrl = serverUrl
+        var finalUrl = ServerUrl
         
         var accessoryForUrl = "?"
         for (key,value) in params {
-            let partialUrl = getPartialUrlForParameter(PARAM(rawValue: key)!,value: value)
+            let partialUrl = getPartialUrlForParameter(key,value: value)
             finalUrl.appendContentsOf("\(accessoryForUrl)\(partialUrl)")
             accessoryForUrl = "&"
         }
@@ -52,6 +52,7 @@ class ASCUrlBuilder {
                 return nil
             }
         }
+        self.params = param
         
     }
 

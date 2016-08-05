@@ -11,6 +11,14 @@ import UIKit
 class ASCProductsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var textLabel: UILabel!
+    var product: ASCProduct? {
+        willSet {
+            textLabel.text = ""
+        }
+        didSet {
+            textLabel.text = product?.face
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

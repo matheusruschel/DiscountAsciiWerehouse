@@ -11,6 +11,7 @@ import UIKit
 class ASCCustomSearchController: UISearchController {
 
     var customBar: ASCCustomSearchBar!
+    var customDelegate: CustomSearchControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class ASCCustomSearchController: UISearchController {
         customBar.tintColor = textColor
         customBar.showsBookmarkButton = false
         customBar.showsCancelButton = true
+        customBar.delegate = self
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -46,4 +48,25 @@ class ASCCustomSearchController: UISearchController {
         super.init(coder: aDecoder)!
     }
 
+}
+extension ASCCustomSearchController:  UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        customDelegate?.didStartSearching()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        customBar.resignFirstResponder()
+        customDelegate?.didTapOnSearchButton()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        customBar.resignFirstResponder()
+        customDelegate?.didTapOnCancelButton()
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        customDelegate?.didChangeSearchText(searchText)
+    }
+    
 }

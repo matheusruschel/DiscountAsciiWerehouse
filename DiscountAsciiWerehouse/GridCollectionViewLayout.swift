@@ -11,7 +11,7 @@ import UIKit
 class GridCollectionViewLayout: UICollectionViewFlowLayout {
     
     // here you can define the height of each cell
-    let itemHeight: CGFloat = 120
+    let itemHeight: CGFloat = 220
     
     override init() {
         super.init()
@@ -31,6 +31,7 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout {
         minimumLineSpacing = 1
         scrollDirection = .Vertical
         self.headerReferenceSize = CGSize(width: 50.0,height: 50.0)
+        self.sectionHeadersPinToVisibleBounds = true
     }
     
     /// here we define the width of each cell, creating a 2 column layout. In case you would create 3 columns, change the number 2 to 3

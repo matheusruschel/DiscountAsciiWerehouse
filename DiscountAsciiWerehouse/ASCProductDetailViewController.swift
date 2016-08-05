@@ -14,11 +14,18 @@ class ASCProductDetailViewController: UIViewController {
     @IBOutlet weak var productFaceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    var product: ASCProduct!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        fillProductData()
+    }
+    
+    func fillProductData() {
         
+        productFaceLabel.text = product.face
+        priceLabel.text = "$\(product.price / 100)"
     }
     
     func configure() {
@@ -29,8 +36,6 @@ class ASCProductDetailViewController: UIViewController {
         let tintedImage = cancelButtonImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         cancelButton.setImage(tintedImage, forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
-        cancelButton.addTarget(self, action: #selector(buttonHighlight), forControlEvents: .TouchDown)
-        
         
         buyButton.backgroundColor = UIColor.grayColor()
         buyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)

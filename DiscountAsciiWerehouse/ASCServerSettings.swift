@@ -8,4 +8,5 @@
 
 import Foundation
 
-let serverUrl = "http://74.50.59.155:5000/api/search"
+let ServerUrl = "http://74.50.59.155:5000/api/search"
+let RequestLimit = 10

@@ -9,14 +9,28 @@
 import Foundation
 
 
-typealias ProductsCompletionBlock = (() throws -> [ASCProduct]?) -> Void
+typealias ProductsCompletionBlock = (() throws -> [ASCProduct]) -> Void
 
 class ASCProductsAPI {
     
     let api = ASCAPICommunicationModel()
+
+    func fetchProducts(searchText: String?, onlyStock:Bool, skip: Int, completion:ProductsCompletionBlock) {
+        
+        var parameters : [PARAM:AnyObject]!  = [PARAM.Limit : RequestLimit,
+                                               PARAM.OnlyInStock: onlyStock,
+                                               PARAM.Skip: skip]
+        
+        if searchText != nil {
+            parameters[PARAM.SearchTerm] = searchText
+        }
+        
+        let url = specifyParametersForUrl(parameters)
+        fetchProductsOnline(url,completion: completion)
+        
+    }
     
-    
-    func fetchProducts(parameters: [PARAM:AnyObject], completion:ProductsCompletionBlock) {
+    private func specifyParametersForUrl(parameters:[PARAM:AnyObject]) -> NSURL {
         
         let urlBuilder = ASCUrlBuilder(param: parameters)
         
@@ -27,9 +41,14 @@ class ASCProductsAPI {
         guard let urlUw = url else {
             fatalError("Could not create url")
         }
+        return urlUw
+    }
+    
+    
+    private func fetchProductsOnline(url: NSURL, completion: ProductsCompletionBlock) {
         
-        api.fetchData(urlUw) { callback in
-        
+        api.fetchData(url) { callback in
+            
             do {
                 let callBackData = try callback()
                 
@@ -45,15 +64,18 @@ class ASCProductsAPI {
                     guard let productUw = product else {
                         throw Error.CouldNotCreateObjectWithDataFile
                     }
+                    
                     return productUw
-                
-                }) })
+                    
+                })
+                })
                 
             } catch let error {
                 completion({throw error})
             }
-        
+            
         }
+
         
     }
     
