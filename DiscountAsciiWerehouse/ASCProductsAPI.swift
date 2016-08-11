@@ -15,14 +15,15 @@ class ASCProductsAPI {
     
     let api = ASCAPICommunicationModel()
 
-    func fetchProducts(searchText: String?, onlyStock:Bool, skip: Int, completion:ProductsCompletionBlock) {
+    func fetchProducts(searchText: String?, onlyStock:Bool, skip: Int, limit: Int, completion:ProductsCompletionBlock) {
         
-        var parameters : [PARAM:AnyObject]!  = [PARAM.Limit : RequestLimit,
+        var parameters : [PARAM:AnyObject]!  = [PARAM.Limit : limit,
                                                PARAM.OnlyInStock: onlyStock,
                                                PARAM.Skip: skip]
         
         if searchText != nil {
-            parameters[PARAM.SearchTerm] = searchText
+            let encodedSearchText = String(htmlEncodedString: searchText!)
+            parameters[PARAM.SearchTerm] = encodedSearchText
         }
         
         let url = specifyParametersForUrl(parameters)
@@ -32,12 +33,7 @@ class ASCProductsAPI {
     
     private func specifyParametersForUrl(parameters:[PARAM:AnyObject]) -> NSURL {
         
-        let urlBuilder = ASCUrlBuilder(param: parameters)
-        
-        if urlBuilder == nil {
-            fatalError("Invalid parameters provided for ASCUrlBuilder")
-        }
-        let url = NSURL(string: urlBuilder!.finalUrl)
+        let url = ASCUrlBuilder.buildUrl(forParameters: parameters)
         guard let urlUw = url else {
             fatalError("Could not create url")
         }
@@ -57,7 +53,7 @@ class ASCProductsAPI {
                     return
                 }
                 
-                completion({ return try dataList.map({ productData in
+                let list: [ASCProduct] = try dataList.map({ productData in
                     
                     let product = ASCProduct(data:productData)
                     
@@ -68,7 +64,8 @@ class ASCProductsAPI {
                     return productUw
                     
                 })
-                })
+                
+                completion({ return list })
                 
             } catch let error {
                 completion({throw error})

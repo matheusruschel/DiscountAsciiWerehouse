@@ -14,24 +14,23 @@ enum PARAM : String {
 
 class ASCUrlBuilder {
     
-    let acceptedParamKeys = [PARAM.SearchTerm, .Skip, .OnlyInStock, .Limit]
-    var params = [PARAM:AnyObject]()
-    var finalUrl: String {
-
+    class func buildUrl(forParameters parameters:[PARAM:AnyObject]) -> NSURL? {
+        
         var finalUrl = ServerUrl
         
         var accessoryForUrl = "?"
-        for (key,value) in params {
-            let partialUrl = getPartialUrlForParameter(key,value: value)
+        for (key,value) in parameters {
+            let partialUrl = ASCUrlBuilder.getPartialUrlForParameter(key,value: value)
             finalUrl.appendContentsOf("\(accessoryForUrl)\(partialUrl)")
             accessoryForUrl = "&"
         }
-        return finalUrl
+        
+        return NSURL(string: finalUrl)
     }
     
-    private func getPartialUrlForParameter(paramType: PARAM, value:AnyObject) -> String {
+    private class func getPartialUrlForParameter(paramType: PARAM, value:AnyObject) -> String {
         
-        
+        // checks for valid value for key
         switch paramType {
         case .SearchTerm: guard ((value as? String) != nil) else {fatalError("Invalid type for parameter provided")}
         case .OnlyInStock: guard ((value as? Bool) != nil) else {fatalError("Invalid type for parameter provided")}
@@ -41,18 +40,6 @@ class ASCUrlBuilder {
         }
         
         return "\(paramType.rawValue)=\(value)"
-        
-    }
-    
-    init?(param: [PARAM:AnyObject]) {
-        
-        for key in param.keys {
-            
-            if !acceptedParamKeys.contains(key) {
-                return nil
-            }
-        }
-        self.params = param
         
     }
 

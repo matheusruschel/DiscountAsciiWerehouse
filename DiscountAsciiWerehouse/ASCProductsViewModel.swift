@@ -21,11 +21,15 @@ class ASCProductsViewModel {
     var products: [ASCProduct]?
     var numberOfItemsInSection: Int {
         if let productsList = products {
+            
+            if showLoadingCell {
+                return productsList.count + 1 // loading cell in case we have more results
+            }
             return productsList.count
         }
         return 0
     }
-    var maxProductLimitReached = false
+    var showLoadingCell = true
     
     func validateSearchText(searchText: String?) -> Bool {
         
@@ -39,31 +43,48 @@ class ASCProductsViewModel {
         
     }
     
-    func loadProducts(searchText: String?, onlyInStock: Bool) {
+    func clearProductsList() {
+        self.products?.removeAll()
+    }
+    
+    func loadProducts(searchText: String?, onlyInStock: Bool,forceRefresh:Bool) {
         
-            productsController.fetchProducts(searchText, onlyStock: onlyInStock) {
+        showLoadingCell = false
+        productsController.fetchProducts(searchText, onlyStock: onlyInStock,forceRefresh:forceRefresh) {
+            
+            statusCallBack in
+            
+            dispatch_sync(dispatch_get_main_queue(), {
                 
-                statusCallBack in
-                
-                dispatch_sync(dispatch_get_main_queue(), {
+                do {
+                    let status = try statusCallBack()
                     
-                    do {
-                        let status = try statusCallBack()
+                    switch status {
+                    case .LoadedNewProducts(let newProducts):       self.products = newProducts
+                                                                    self.showLoadingCell = true
+                    case .NoResultsFound:
+                                                                    self.products = nil
+                                                                    self.showLoadingCell = false
+                    case .ReachedLimit(let newProducts):
                         
-                        switch status {
-                        case .LoadedNewProducts(let newProducts): self.products = newProducts
-                                                                  self.maxProductLimitReached = false
-                        case .ReachedProductMaxLimit: self.maxProductLimitReached = true
-                        }                            
-                        
-                        self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
-                    } catch let error as NSError {
-                        self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: false, errorMsg: error.localizedDescription)
+                        if newProducts.count != 0 {
+                            self.products = newProducts
+                        } 
+                        self.showLoadingCell = false
                     }
-                })
-                
-            }
+                    
+                    self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
+                } catch let error as NSError {
+                    self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: false, errorMsg: error.localizedDescription)
+                }
+            })
+            
+        }
 
+        
+    }
+    
+    func handleCallBack(completion:ProductControllerStatusCompletionBlock) {
         
     }
     

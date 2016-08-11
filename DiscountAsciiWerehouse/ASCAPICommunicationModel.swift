@@ -12,9 +12,13 @@ typealias DataCallbackCompletionBlock =  (() throws -> AnyObject?) -> Void
 
 class ASCAPICommunicationModel {
     
+    var session: NSURLSession!
+    
     func fetchData(url:NSURL, completion:DataCallbackCompletionBlock) {
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) {
+        cancelDataRequests()
+        session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url) {
             (data, response, error) in
             
             if error == nil {
@@ -33,6 +37,20 @@ class ASCAPICommunicationModel {
             
         }
         task.resume()
+        
+    }
+    
+    func cancelDataRequests() {
+        
+        if let session = session {
+            session.getTasksWithCompletionHandler() {
+                (dataTasks,_,_) in
+                
+                for task in dataTasks {
+                    task.cancel()
+                }
+            }
+        }
         
     }
     
