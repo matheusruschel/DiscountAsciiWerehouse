@@ -23,7 +23,7 @@ class ASCProductsViewModel {
         if let productsList = products {
             
             if showLoadingCell {
-                return productsList.count + 1 // loading cell in case we have more results
+                return productsList.count + 1 //cells + loading cell in case we have more results to fetch
             }
             return productsList.count
         }
@@ -35,7 +35,7 @@ class ASCProductsViewModel {
         
         // eliminates cases like phrases with only blank spaces
         if let searchText = searchText {
-            if searchText.stringByReplacingOccurrencesOfString(" ", withString: "") == "" {
+            if searchText != "" && searchText.stringByReplacingOccurrencesOfString(" ", withString: "") == "" {
                 return false
             }
         }
@@ -81,10 +81,6 @@ class ASCProductsViewModel {
             
         }
 
-        
-    }
-    
-    func handleCallBack(completion:ProductControllerStatusCompletionBlock) {
         
     }
     

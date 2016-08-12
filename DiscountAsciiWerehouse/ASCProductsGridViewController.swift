@@ -28,6 +28,7 @@ class ASCProductsGridViewController: UIViewController {
     var activityIndicator: UIActivityIndicatorView!
     var inStockLabel: UILabel!
     var inStockButton: UIButton!
+    var onlyInStockSelectedChanged = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class ASCProductsGridViewController: UIViewController {
     // MARK: Button action
     func checkboxToggle() {
         self.inStockButton.selected = !self.inStockButton.selected
+        loadMoreProducts(searchBar.text, onlyInStock: inStockButton.selected)
         
     }
     
@@ -166,8 +168,18 @@ class ASCProductsGridViewController: UIViewController {
                     x: self.inStockLabel.frame.origin.x,
                     y: self.searchBarBoundsY! + ( (-1 * collectionV.contentOffset.y)),
                     width: self.inStockLabel.frame.width,
-                    height: self.inStockLabel.frame.height)
+                    height: self.inStockLabel.frame.height
+                )
+                
+                self.inStockButton?.frame = CGRect(
+                    x: self.inStockButton.frame.origin.x,
+                    y: self.searchBarBoundsY! + ( (-1 * collectionV.contentOffset.y)),
+                    width: self.inStockButton.frame.width,
+                    height: self.inStockButton.frame.height
+                )
             }
+            
+            
         }
     }
     
@@ -202,7 +214,7 @@ class ASCProductsGridViewController: UIViewController {
                 self.activityIndicator.startAnimating()
             }
             productsViewModel.clearProductsList()
-            productsViewModel.loadProducts(searchText,onlyInStock: false,forceRefresh: false)
+            productsViewModel.loadProducts(searchText,onlyInStock: inStockButton.selected,forceRefresh: false)
             self.productsCollectionView.reloadData()
         } 
     }
@@ -320,9 +332,8 @@ extension ASCProductsGridViewController : UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if productsViewModel.validateSearchText(searchText) {
-            loadMoreProducts(searchText, onlyInStock: inStockButton.selected)
-        }
+        loadMoreProducts(searchText, onlyInStock: inStockButton.selected)
+        
     }
     
 }
