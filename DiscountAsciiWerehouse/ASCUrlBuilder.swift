@@ -32,14 +32,33 @@ class ASCUrlBuilder {
         
         // checks for valid value for key
         switch paramType {
-        case .SearchTerm: guard ((value as? String) != nil) else {fatalError("Invalid type for parameter provided")}
-        case .OnlyInStock: guard ((value as? Bool) != nil) else {fatalError("Invalid type for parameter provided")}
+        case .SearchTerm:
+            
+        if let valueString = (value as? String) {
+            return "\(paramType.rawValue)=\(valueString)"
+        } else {
+            fatalError("Invalid type for parameter provided")
+        }
+        case .OnlyInStock:
+            
+            if let valueInt = (value as? Int) {
+                return "\(paramType.rawValue)=\(valueInt)"
+            } else {
+                fatalError("Invalid type for parameter provided")
+            }
+            
         case .Limit: fallthrough
-        case .Skip: guard ((value as? Int) != nil) else {fatalError("Invalid type for parameter provided")}
+        case .Skip:
+            if let valueInt = value as? Int {
+                return "\(paramType.rawValue)=\(valueInt)"
+            } else {
+                fatalError("Invalid type for parameter provided")
+            }
 
         }
         
-        return "\(paramType.rawValue)=\(value)"
+        
+        
         
     }
 
