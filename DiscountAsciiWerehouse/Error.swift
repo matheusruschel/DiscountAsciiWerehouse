@@ -13,4 +13,5 @@ enum Error : ErrorType {
     case ErrorWithMsg(msg: String)
     case JSONNotRecognizedError
     case CouldNotCreateObjectWithDataFile
+    case CoreDataAddError
 }
