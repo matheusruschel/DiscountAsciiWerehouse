@@ -8,9 +8,15 @@
 
 import Foundation
 
+enum FetchStatus {
+    case LoadedNewProducts, NoResultsFound, ReachedLimit, Error(msg:String)
+    
+}
+
 protocol ProductCoordinatorDelegate : class {
     
-    func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, sucess:Bool,errorMsg: String?)
+    func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, status:FetchStatus)
+    func coordinatorDidStartSearching(viewModel: ASCProductsViewModel)
 }
 
 
@@ -20,14 +26,15 @@ class ASCProductsViewModel {
     private let productsController = ASCProductsFetchingController()
     private var products: [ASCProduct]?
     var numberOfItemsInSection: Int {
+        var listSize = 0
         if let productsList = products {
-            
-            if showLoadingCell {
-                return productsList.count + 1 //cells + loading cell in case we have more results to fetch
-            }
-            return productsList.count
+            listSize += productsList.count
         }
-        return 1
+        
+        if showLoadingCell {
+            listSize += 1 //cells + loading cell in case we have more results to fetch
+        }
+        return listSize
     }
     var showLoadingCell = true
     
@@ -50,7 +57,8 @@ class ASCProductsViewModel {
     
     func loadProducts(searchText: String?, onlyInStock: Bool,forceRefresh:Bool) {
         
-        showLoadingCell = false
+        showLoadingCell = true
+        self.delegate?.coordinatorDidStartSearching(self)
         productsController.fetchProducts(searchText, onlyStock: onlyInStock,forceRefresh:forceRefresh) {
             
             statusCallBack in
@@ -58,24 +66,27 @@ class ASCProductsViewModel {
             do {
                 let status = try statusCallBack()
                 
+                var delegateStatus:FetchStatus!
                 switch status {
-                case .LoadedNewProducts(let newProducts):       self.products = newProducts
+                case .LoadedNewProducts(let newProducts):
+                                                                self.products = newProducts
                                                                 self.showLoadingCell = true
+                                                                delegateStatus = .LoadedNewProducts
                 case .NoResultsFound:
                                                                 self.products = nil
-                                                                self.showLoadingCell = false
+                                                                self.showLoadingCell = true
+                                                                delegateStatus = .NoResultsFound
                 case .ReachedLimit(let newProducts):
                     
-                    if newProducts.count != 0 {
-                        self.products = newProducts
-                    }
-                    self.showLoadingCell = false
+                                                                self.products = newProducts
+                                                                self.showLoadingCell = false
+                                                                delegateStatus = .ReachedLimit
                 }
                 
-                self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
+                self.delegate?.coordinatorDidFinishLoadingProducts(self, status: delegateStatus!)
             } catch let error as NSError {
                 self.showLoadingCell = true
-                self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: false, errorMsg: error.localizedDescription)
+                self.delegate?.coordinatorDidFinishLoadingProducts(self, status: .Error(msg: error.localizedDescription))
             }
             
         }

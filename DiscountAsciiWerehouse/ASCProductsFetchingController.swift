@@ -61,7 +61,10 @@ class ASCProductsFetchingController {
                 }
                 
                 if fetchedProducts.count < self.requestLimit {
-                    self.paginatedProducts.appendContentsOf(fetchedProducts)
+                    
+                    if fetchedProducts.count != 0 {
+                        self.paginatedProducts.appendContentsOf(fetchedProducts)
+                    }
                     return .ReachedLimit(products:self.paginatedProducts)
                 }
                 

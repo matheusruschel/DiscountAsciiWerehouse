@@ -133,8 +133,6 @@ class CustomCache <T: CacheDescriptor> {
             } else {
                 return nil
             }
-            
-            
 
             
         } catch let error as NSError {

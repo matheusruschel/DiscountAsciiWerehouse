@@ -24,7 +24,7 @@ class ASCProductsAPI {
         
         if let searchString = searchText {
             if searchString.stringByReplacingOccurrencesOfString(" ", withString: "") != "" {
-                let encodedSearchText = String(htmlEncodedString: searchString)
+                let encodedSearchText = String(htmlEncodedString: searchString).stringByReplacingOccurrencesOfString(" ", withString: "")
                 parameters[PARAM.SearchTerm] = encodedSearchText
             }
         }

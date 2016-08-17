@@ -30,6 +30,7 @@ class ASCProductsGridViewController: UIViewController {
     var viewError: ErrorView!
     var errorViewMovement: CGFloat = 30
     var errorViewIsAnimating = false
+    var loadCellButtonEnabled = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class ASCProductsGridViewController: UIViewController {
     // MARK: Button action
     func checkboxToggle() {
         self.inStockButton.selected = !self.inStockButton.selected
-        loadMoreProducts(searchBar.text, onlyInStock: inStockButton.selected)
+        loadProductsByChangingParameters()
         
     }
     
@@ -227,14 +228,24 @@ class ASCProductsGridViewController: UIViewController {
     }
     
     // MARK: Load products
-    func loadMoreProducts(searchText:String?,onlyInStock: Bool) {
+    func loadProductsByChangingParameters() {
         
-        if productsViewModel.validateSearchText(searchText) {
+        // cancels previous request if user is still typing
+        NSObject.cancelPreviousPerformRequestsWithTarget(self)
+        
+        // validates search string
+        if self.productsViewModel.validateSearchText(searchBar.text) {
+            self.productsViewModel.clearProductsList()
+            loadCellButtonEnabled = false
+            dispatch_async(dispatch_get_main_queue(), {
+                self.productsCollectionView.reloadData()
+            })
+        }
 
-            productsViewModel.clearProductsList()
-            productsViewModel.loadProducts(searchText,onlyInStock: onlyInStock,forceRefresh: false)
-            self.productsCollectionView.reloadData()
-        } 
+    }
+    
+    func loadMoreProducts() {
+        productsViewModel.loadProducts(searchBar.text,onlyInStock: inStockButton.selected,forceRefresh: false)
     }
     
     //MARK: Dismiss Keyboard
@@ -293,16 +304,76 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
             cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as?ASCProductsCollectionViewCell
             (cell as! ASCProductsCollectionViewCell).product = productsViewModel.itemForIndexPath(indexPath.row)
         } else {
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(loadingCellIdentifier, forIndexPath: indexPath) as? ASCLoadingCollectionViewCell
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(loadingCellIdentifier, forIndexPath: indexPath) as! ASCLoadingCollectionViewCell
+            (cell as! ASCLoadingCollectionViewCell).delegate = self
+            
+            if loadCellButtonEnabled {
+                (cell as! ASCLoadingCollectionViewCell).switchMode(.LoadMore)
+            } else {
+                (cell as! ASCLoadingCollectionViewCell).switchMode(.Spinner)
+            }
         }
         
         // if last row (loading cell) is visible then we load more products
         if indexPath.row == numberOfItemsInSection  {
-            productsViewModel.loadProducts(searchBar.text,onlyInStock: inStockButton.selected,forceRefresh: false)
+            
+            if let cellLoading = cell as? ASCLoadingCollectionViewCell {
+                
+                if cellLoading.mode == .Spinner {
+                    self.performSelector(#selector(loadMoreProducts), withObject: nil, afterDelay: 0.3)
+                }
+            }
+           
         }
         
         return cell!
         
+    }
+    
+}
+extension ASCProductsGridViewController : LoadingCellDelegate {
+    
+    func buttonLoadMoreClicked(cell:ASCLoadingCollectionViewCell) {
+        productsViewModel.loadProducts(searchBar.text,onlyInStock: inStockButton.selected,forceRefresh: false)
+        loadCellButtonEnabled = false
+    }
+}
+
+extension ASCProductsGridViewController : ProductCoordinatorDelegate {
+    
+    func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, status: FetchStatus) {
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.productsCollectionView.reloadData()
+            
+            switch status {
+            case .NoResultsFound:
+                self.loadCellButtonEnabled = true
+            case .Error(let msg):
+                self.showErrorView(msg)
+                self.loadCellButtonEnabled = true
+            default: self.loadCellButtonEnabled = false
+            }
+    
+        })
+        
+    }
+    
+    func coordinatorDidStartSearching(viewModel: ASCProductsViewModel) {
+    }
+}
+extension ASCProductsGridViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        loadProductsByChangingParameters()
     }
     
 }
@@ -320,38 +391,6 @@ extension ASCProductsGridViewController : UICollectionViewDelegateFlowLayout {
                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         let cellLeg = (collectionView.frame.size.width/2) - 5;
         return CGSizeMake(cellLeg,cellLeg);
-    }
-
-}
-
-extension ASCProductsGridViewController : ProductCoordinatorDelegate {
-    
-    func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, sucess: Bool, errorMsg: String?) {
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.productsCollectionView.reloadData()
-            
-            if !sucess {
-                self.showErrorView(errorMsg!)
-            }
-        })
-        
-    }
-}
-extension ASCProductsGridViewController : UISearchBarDelegate {
-    
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        loadMoreProducts(searchText, onlyInStock: inStockButton.selected)
-        
     }
     
 }

@@ -17,14 +17,15 @@ class ASCAPICommunicationModel: NSObject {
     
     override init() {
         super.init()
-        session = NSURLSession.sharedSession()
+        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        sessionConfig.timeoutIntervalForRequest = 15
+        session = NSURLSession(configuration: sessionConfig)
         cache = CustomCache<NSData>.sharedInstance()
         
     }
     
     func fetchData(url:NSURL, completion:DataCallbackCompletionBlock) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             // cancels any request if there is on going requests before making a new one
             self.cancelDataRequests()
             // load from cache
@@ -40,17 +41,12 @@ class ASCAPICommunicationModel: NSObject {
             } else {
                 self.fetchDataOnline(url,completion:completion)
             }
-        })
-        
-        
-        
         
     }
     
     func fetchDataOnline(url: NSURL, completion:DataCallbackCompletionBlock) {
         
-        let request = NSURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 15)
-        let task = session.dataTaskWithRequest(request) {
+        let task = session.dataTaskWithURL(url) {
             (data, response, error) in
             
             if error == nil {
@@ -82,7 +78,7 @@ class ASCAPICommunicationModel: NSObject {
         
         if let session = session {
             session.getTasksWithCompletionHandler() {
-                (dataTasks,_,_) in
+                (dataTasks,_,downloadTasks) in
                 
                 for task in dataTasks {
                     task.cancel()
