@@ -24,22 +24,23 @@ class ASCAPICommunicationModel: NSObject {
     
     func fetchData(url:NSURL, completion:DataCallbackCompletionBlock) {
         
-       
-        // load from cache
-        if let cacheObject = cache?[url.absoluteString] {
-            let ndJsonParser = NDJSONParser(data:cacheObject.dataForCache())
-            
-            if ndJsonParser == nil {
-                completion({throw Error.JSONNotRecognizedError})
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            // cancels any request if there is on going requests before making a new one
+            self.cancelDataRequests()
+            // load from cache
+            if let cacheObject = self.cache?[url.absoluteString] {
+                let ndJsonParser = NDJSONParser(data:cacheObject.dataForCache())
+                
+                if ndJsonParser == nil {
+                    completion({throw Error.JSONNotRecognizedError})
+                } else {
+                    completion({return ndJsonParser!.content })
+                }
+                
             } else {
-                completion({return ndJsonParser!.content })
+                self.fetchDataOnline(url,completion:completion)
             }
-            
-        } else {
-             // cancels any request if there is on going requests before making a new one
-            cancelDataRequests()
-            fetchDataOnline(url,completion:completion)
-        }
+        })
         
         
         
@@ -48,22 +49,24 @@ class ASCAPICommunicationModel: NSObject {
     
     func fetchDataOnline(url: NSURL, completion:DataCallbackCompletionBlock) {
         
-        let request = NSURLRequest(URL: url)
+        let request = NSURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 15)
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) in
             
             if error == nil {
                 
                 if let cache = self.cache {
-                    cache[url.absoluteString] = data
+                    
+                    if data?.length != 0 {
+                        cache[url.absoluteString] = data
+                    }
+                    
                 }
                 
-                let ndJsonParser = NDJSONParser(data:data!)
-                
-                if ndJsonParser == nil {
-                    completion({throw Error.JSONNotRecognizedError})
+                if let ndJsonParser = NDJSONParser(data:data!) {
+                    completion({return ndJsonParser.content })
                 } else {
-                    completion({return ndJsonParser!.content })
+                    completion({throw Error.JSONNotRecognizedError})
                 }
                 
                 

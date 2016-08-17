@@ -14,7 +14,7 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        activityIndicator.startAnimating()
+        startLoading()
         self.backgroundColor = UIColor.lightGrayColor()
     }
     
@@ -22,6 +22,10 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
         activityIndicator.stopAnimating()
     }
     
-    
+    func startLoading() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.activityIndicator.startAnimating()
+        })
+    }
 
 }

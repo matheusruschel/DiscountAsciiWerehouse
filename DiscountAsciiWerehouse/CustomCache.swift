@@ -20,15 +20,12 @@ class CustomCache <T: CacheDescriptor> {
     
     subscript(key: String) -> T? {
         get {
-            return cacheObjects[key]
+            //return cacheObjects[key]
+            return loadObjectForKey(key)
         }
         set(newValue) {
             addObject(newValue!, forKey: key)
         }
-    }
-    
-    init() {
-        loadCache()
     }
     
     class func sharedInstance() -> CustomCache<T> {
@@ -66,6 +63,37 @@ class CustomCache <T: CacheDescriptor> {
         
     }
     
+    func clearCacheObjectsThatSurpassedTTL(allowedTTL:NSTimeInterval = 3600) {
+            
+            let appDelegate =
+                UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            
+            if let objects = self.fetchObjectsInCache() {
+                
+                for object in objects {
+                    
+                    let timestamp = object.valueForKey("timestamp") as! NSDate
+                    let endDate = timestamp.dateByAddingTimeInterval(allowedTTL)
+                    let currDate = NSDate()
+                    
+                    if currDate.compare(endDate) == .OrderedDescending {
+                        managedContext.deleteObject(object)
+                    }
+                }
+                
+                do {
+                    try managedContext.save()
+                } catch let error as NSError  {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                
+            }
+            
+
+
+    }
+    
     func clearCache() {
         
         let appDelegate =
@@ -85,30 +113,88 @@ class CustomCache <T: CacheDescriptor> {
         }
     }
     
-    private func loadCache() {
-
+    private func fetchObject(key: String) -> NSManagedObject? {
+        
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
-
+        
         let fetchRequest = NSFetchRequest(entityName: "CacheObject")
+        fetchRequest.predicate = NSPredicate(format: "keyValue == %@", key)
+        fetchRequest.fetchLimit = 1
         
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
             
-            var loadedDic = [String: T]()
-            for result in results as! [NSManagedObject] {
-                let resultKey = result.valueForKey("keyValue") as! String
-                let resultData = result.valueForKey("data") as! NSData
-                loadedDic[resultKey] = T(data: resultData)
+            if results.count != 0 {
+                return results[0] as? NSManagedObject
+            } else {
+                return nil
             }
             
-            cacheObjects = loadedDic
+            
+
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
+        return nil
+
+        
+    }
+    
+    private func loadObjectForKey(key: String) ->  T? {
+        
+        if let result = self.fetchObject(key) {
+            let resultData = result.valueForKey("data") as! NSData
+            return T(data: resultData)
+            
+        } else {
+            return nil
+        }
+
+    }
+    
+    private func fetchObjectsInCache() -> [NSManagedObject]? {
+            
+            let appDelegate =
+                UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            let fetchRequest = NSFetchRequest(entityName: "CacheObject")
+            
+            do {
+                let results =
+                    try managedContext.executeFetchRequest(fetchRequest)
+                
+                return results as? [NSManagedObject]
+            } catch let error as NSError {
+                print("Could not fetch \(error), \(error.userInfo)")
+            }
+
+        return nil
+        
+    }
+    
+    func loadCache() {
+
+            
+            if let objects = self.fetchObjectsInCache() {
+                
+                var loadedDic = [String: T]()
+                for result in objects {
+                    let resultKey = result.valueForKey("keyValue") as! String
+                    let resultData = result.valueForKey("data") as! NSData
+                    loadedDic[resultKey] = T(data: resultData)
+                }
+                
+                self.cacheObjects = loadedDic
+            }
+
     }
     
     

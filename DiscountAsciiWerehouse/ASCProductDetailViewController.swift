@@ -19,13 +19,53 @@ class ASCProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        fillProductData()
     }
     
-    func fillProductData() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        modifyViewContentForProduct()
+    }
+    
+    func modifyViewContentForProduct() {
         
-        productFaceLabel.text = product.face
+        productFaceLabel.text = "\(product.face)\u{0000FE0E}"
         priceLabel.text = "$\(product.price / 100)"
+
+        if product.stock == 1 {
+            
+            let labelButtonBuyTitle = UILabel(frame:
+                CGRect(
+                    x: 0,
+                    y: 0,
+                    width: UIScreen.mainScreen().bounds.size.width,
+                    height: buyButton.frame.height))
+            labelButtonBuyTitle.font = UIFont.appFontWithSize(30)
+            labelButtonBuyTitle.textColor = UIColor.whiteColor()
+            labelButtonBuyTitle.textAlignment = .Center
+            
+            let labelButtonBuySubTitle = UILabel(frame:
+                CGRect(
+                    x: 0,
+                    y: buyButton.frame.height * 0.7,
+                    width: UIScreen.mainScreen().bounds.size.width,
+                    height: buyButton.frame.height * 0.2))
+            labelButtonBuySubTitle.font = UIFont.appFontWithSize(20)
+            labelButtonBuySubTitle.textAlignment = .Center
+            
+            labelButtonBuyTitle.text = "BUY NOW!"
+            labelButtonBuySubTitle.text = "(Only 1 more in stock!)"
+            labelButtonBuySubTitle.textColor = UIColor.whiteColor()
+            buyButton.setTitle("", forState: .Normal)
+            
+            buyButton.addSubview(labelButtonBuyTitle)
+            buyButton.addSubview(labelButtonBuySubTitle)
+
+        } else if product.stock == 0 {
+            buyButton.setTitle("OUT OF STOCK ;/", forState: .Normal)
+        }
+        self.view.setNeedsLayout()
+        
+        
     }
     
     func configure() {
@@ -37,6 +77,7 @@ class ASCProductDetailViewController: UIViewController {
         cancelButton.setImage(tintedImage, forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         
+        
         buyButton.backgroundColor = UIColor.grayColor()
         buyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         buyButton.titleLabel!.font = UIFont.appFontWithSize(30)
@@ -44,8 +85,8 @@ class ASCProductDetailViewController: UIViewController {
         buyButton.addTarget(self, action: #selector(buttonHighlight), forControlEvents: .TouchDown)
         priceLabel.font = UIFont.appFontWithSize(20)
         
-        productFaceLabel.text = "( ﾟヮﾟ)"
         productFaceLabel.font = UIFont.appFontWithSize(50)
+        productFaceLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func didReceiveMemoryWarning() {

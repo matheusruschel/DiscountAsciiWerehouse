@@ -22,44 +22,55 @@ class ASCProductsGridViewController: UIViewController {
         }
     }
     let productsViewModel = ASCProductsViewModel()
-    var isLoaded = false
     var searchBar: UISearchBar!
     var searchBarBoundsY: CGFloat!
-    var activityIndicator: UIActivityIndicatorView!
     var inStockLabel: UILabel!
     var inStockButton: UIButton!
     var onlyInStockSelectedChanged = false
+    var viewError: ErrorView!
+    var errorViewMovement: CGFloat = 30
+    var errorViewIsAnimating = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.grayColor()
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor()
         self.productsViewModel.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         prepareUI()
-        
-        if !isLoaded {
-            self.activityIndicator.startAnimating()
-            productsViewModel.loadProducts(nil,onlyInStock: false,forceRefresh: false)
-        }
     }
     
+    // MARK: Button action
+    func checkboxToggle() {
+        self.inStockButton.selected = !self.inStockButton.selected
+        loadMoreProducts(searchBar.text, onlyInStock: inStockButton.selected)
+        
+    }
     
     // MARK: UI Configuration
     func prepareUI() {
         configureSearchController()
         configureInStockLabel()
         configureInStockButton()
-        configureActivityIndicator()
+        configureErrorView()
     }
     
-    
-    // MARK: Button action
-    func checkboxToggle() {
-        self.inStockButton.selected = !self.inStockButton.selected
-        loadMoreProducts(searchBar.text, onlyInStock: inStockButton.selected)
+    func configureErrorView() {
+        
+        if self.viewError == nil {
+            let y = -errorViewMovement
+            
+            self.viewError = ErrorView(frame: CGRect(
+                x: 0,
+                y: y,
+                width: UIScreen.mainScreen().bounds.size.width,
+                height: errorViewMovement))
+            self.view.addSubview(self.viewError)
+        }
         
     }
     
@@ -94,29 +105,16 @@ class ASCProductsGridViewController: UIViewController {
             self.inStockLabel.font = UIFont.appFontWithSize(14)
             self.inStockLabel.textColor = UIColor.whiteColor()
             self.inStockLabel.text = "In stock"
+            self.inStockLabel.adjustsFontSizeToFitWidth = true
             
             self.view.addSubview(self.inStockLabel)
         }
     }
     
-    func configureActivityIndicator() {
-        
-        if self.activityIndicator == nil {
-            
-            self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-            self.activityIndicator.hidesWhenStopped = true
-            self.activityIndicator.center = self.view.center
-        }
-        if !self.activityIndicator!.isDescendantOfView(self.productsCollectionView){
-            self.productsCollectionView.addSubview(self.activityIndicator!)
-        }
-
-    }
-    
     func configureSearchController() {
         
         if self.searchBar == nil{
-            searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.size.height
+            searchBarBoundsY = 0
             
             self.searchBar = UISearchBar(frame: CGRectMake(0,searchBarBoundsY, UIScreen.mainScreen().bounds.size.width * 0.75, 44))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
@@ -144,11 +142,41 @@ class ASCProductsGridViewController: UIViewController {
         self.productsCollectionView.registerNib(loadingNib, forCellWithReuseIdentifier: loadingCellIdentifier)
         self.productsCollectionView!.backgroundColor = UIColor.clearColor()
     }
+    
+    // MARK: Show error view
+    
+    func showErrorView(msg: String) {
+        
+        if !self.errorViewIsAnimating {
+            
+            self.viewError.errorLabel.text = msg
+            self.errorViewIsAnimating = true
 
+            UIView.animateWithDuration(0.5, delay: 0.0, options: [.CurveEaseInOut], animations: { Void in
+                self.viewError.transform = CGAffineTransformMakeTranslation(0, self.errorViewMovement)
+                
+                },completion: { _ in
+                    
+                    UIView.animateWithDuration(0.5, delay: 1.5, options: [.CurveEaseInOut], animations: { Void in
+                        self.viewError.transform = CGAffineTransformMakeTranslation(0, 0)
+                    
+                        },completion: { bool in
+                    
+                            self.errorViewIsAnimating = false
+                        })
+            })
+        }
+    }
+
+    //MARK: Observers
     
     func addObservers(){
         let context = UnsafeMutablePointer<UInt8>(bitPattern: 1)
         self.productsCollectionView?.addObserver(self, forKeyPath: "contentOffset", options: [.New,.Old], context: context)
+    }
+    
+    func removeObservers(){
+        self.productsCollectionView?.removeObserver(self, forKeyPath: "contentOffset")
     }
     
     override func observeValueForKeyPath(keyPath: String?,
@@ -183,14 +211,7 @@ class ASCProductsGridViewController: UIViewController {
         }
     }
     
-    //MARK: Deinitialization
-    deinit{
-        self.removeObservers()
-    }
-    
-    func removeObservers(){
-        self.productsCollectionView?.removeObserver(self, forKeyPath: "contentOffset")
-    }
+    // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -209,15 +230,24 @@ class ASCProductsGridViewController: UIViewController {
     func loadMoreProducts(searchText:String?,onlyInStock: Bool) {
         
         if productsViewModel.validateSearchText(searchText) {
-            
-            if !self.activityIndicator.isAnimating() {
-                self.activityIndicator.startAnimating()
-            }
+
             productsViewModel.clearProductsList()
-            productsViewModel.loadProducts(searchText,onlyInStock: inStockButton.selected,forceRefresh: false)
+            productsViewModel.loadProducts(searchText,onlyInStock: onlyInStock,forceRefresh: false)
             self.productsCollectionView.reloadData()
         } 
     }
+    
+    //MARK: Dismiss Keyboard
+    
+    func dismissKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
+    //MARK: Deinitialization
+    deinit{
+        self.removeObservers()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -245,16 +275,8 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
         
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if isLoaded {
-            return productsViewModel.numberOfItemsInSection
-        }
-        return 0
+        return productsViewModel.numberOfItemsInSection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -271,9 +293,8 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
             cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as?ASCProductsCollectionViewCell
             (cell as! ASCProductsCollectionViewCell).product = productsViewModel.itemForIndexPath(indexPath.row)
         } else {
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(loadingCellIdentifier, forIndexPath: indexPath) as?ASCLoadingCollectionViewCell
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(loadingCellIdentifier, forIndexPath: indexPath) as? ASCLoadingCollectionViewCell
         }
-        
         
         // if last row (loading cell) is visible then we load more products
         if indexPath.row == numberOfItemsInSection  {
@@ -307,21 +328,18 @@ extension ASCProductsGridViewController : ProductCoordinatorDelegate {
     
     func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, sucess: Bool, errorMsg: String?) {
         
-        if self.activityIndicator.isAnimating() {
-            self.activityIndicator.stopAnimating()
-        }
-        isLoaded = true
-        self.productsCollectionView.reloadData()
-        
-        if sucess {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.productsCollectionView.reloadData()
             
-        } else {
-            // present error
-        }
+            if !sucess {
+                self.showErrorView(errorMsg!)
+            }
+        })
         
     }
 }
 extension ASCProductsGridViewController : UISearchBarDelegate {
+    
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()

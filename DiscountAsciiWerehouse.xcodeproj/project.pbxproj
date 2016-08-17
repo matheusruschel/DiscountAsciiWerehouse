@@ -29,12 +29,9 @@
 		2C83FE621D522AA000DB1F86 /* ASCProductsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE611D522AA000DB1F86 /* ASCProductsAPI.swift */; };
 		2C83FE661D52557E00DB1F86 /* ASCLoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE641D52557E00DB1F86 /* ASCLoadingCollectionViewCell.swift */; };
 		2C83FE671D52557E00DB1F86 /* ASCLoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE651D52557E00DB1F86 /* ASCLoadingCollectionViewCell.xib */; };
-		2C83FE6A1D525B5700DB1F86 /* ASCCustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE691D525B5700DB1F86 /* ASCCustomSearchBar.swift */; };
-		2C83FE6C1D525D8D00DB1F86 /* ASCCustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE6B1D525D8D00DB1F86 /* ASCCustomSearchController.swift */; };
 		2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */; };
 		2C83FE791D52954C00DB1F86 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */; };
 		2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */; };
-		2C9EFD141D55282300F7E106 /* CustomBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */; };
 		2CECA81B1D5CF32300365570 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA81A1D5CF32300365570 /* String+Extension.swift */; };
 		2CECA8211D62298A00365570 /* CustomCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8201D62298A00365570 /* CustomCache.swift */; };
 		2CECA8271D62332600365570 /* CacheModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8251D62332600365570 /* CacheModel.xcdatamodeld */; };
@@ -42,6 +39,7 @@
 		2CECA8341D6244CB00365570 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8331D6244CB00365570 /* NSData+Extension.swift */; };
 		2CECA83B1D6252E400365570 /* CacheObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8381D6252E400365570 /* CacheObject+CoreDataProperties.m */; };
 		2CECA83C1D6252E400365570 /* CacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA83A1D6252E400365570 /* CacheObject.m */; };
+		2CECA8401D63CD5F00365570 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA83F1D63CD5F00365570 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,22 +88,20 @@
 		2C83FE611D522AA000DB1F86 /* ASCProductsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsAPI.swift; sourceTree = "<group>"; };
 		2C83FE641D52557E00DB1F86 /* ASCLoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C83FE651D52557E00DB1F86 /* ASCLoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCLoadingCollectionViewCell.xib; sourceTree = "<group>"; };
-		2C83FE691D525B5700DB1F86 /* ASCCustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCustomSearchBar.swift; sourceTree = "<group>"; };
-		2C83FE6B1D525D8D00DB1F86 /* ASCCustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCustomSearchController.swift; sourceTree = "<group>"; };
 		2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductDetailViewController.swift; sourceTree = "<group>"; };
 		2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsFetchingController.swift; sourceTree = "<group>"; };
-		2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarDelegate.swift; sourceTree = "<group>"; };
 		2CECA81A1D5CF32300365570 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2CECA8201D62298A00365570 /* CustomCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCache.swift; sourceTree = "<group>"; };
 		2CECA8261D62332600365570 /* CacheModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CacheModel.xcdatamodel; sourceTree = "<group>"; };
 		2CECA8281D62347300365570 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		2CECA82A1D62356200365570 /* DiscountAsciiWerehouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiscountAsciiWerehouse-Bridging-Header.h"; sourceTree = "<group>"; };
+		2CECA82A1D62356200365570 /* DiscountAsciiWerehouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiscountAsciiWerehouse-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		2CECA8331D6244CB00365570 /* NSData+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
 		2CECA8371D6252E400365570 /* CacheObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CacheObject+CoreDataProperties.h"; path = "../CacheObject+CoreDataProperties.h"; sourceTree = "<group>"; };
 		2CECA8381D6252E400365570 /* CacheObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CacheObject+CoreDataProperties.m"; path = "../CacheObject+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2CECA8391D6252E400365570 /* CacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheObject.h; path = ../CacheObject.h; sourceTree = "<group>"; };
 		2CECA83A1D6252E400365570 /* CacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CacheObject.m; path = ../CacheObject.m; sourceTree = "<group>"; };
+		2CECA83F1D63CD5F00365570 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +138,6 @@
 				2C83FE251D4F7BB900DB1F86 /* DiscountAsciiWerehouseTests */,
 				2C83FE301D4F7BB900DB1F86 /* DiscountAsciiWerehouseUITests */,
 				2C83FE0F1D4F7BB900DB1F86 /* Products */,
-				2CECA82A1D62356200365570 /* DiscountAsciiWerehouse-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +154,7 @@
 		2C83FE101D4F7BB900DB1F86 /* DiscountAsciiWerehouse */ = {
 			isa = PBXGroup;
 			children = (
+				2CECA83E1D63CD4B00365570 /* View */,
 				2C83FE4C1D4F8DEA00DB1F86 /* Util */,
 				2C83FE3F1D4F7FE800DB1F86 /* Model */,
 				2C83FE531D4F9E8300DB1F86 /* ViewModel */,
@@ -207,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				2C83FE751D52898400DB1F86 /* ProductViewController */,
-				2C83FE681D525B2300DB1F86 /* SearchBarController */,
 				2C83FE431D4F846F00DB1F86 /* ProductsGridCollectionViewController */,
 			);
 			name = ViewController;
@@ -283,16 +278,6 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		2C83FE681D525B2300DB1F86 /* SearchBarController */ = {
-			isa = PBXGroup;
-			children = (
-				2C9EFD131D55282300F7E106 /* CustomBarDelegate.swift */,
-				2C83FE691D525B5700DB1F86 /* ASCCustomSearchBar.swift */,
-				2C83FE6B1D525D8D00DB1F86 /* ASCCustomSearchController.swift */,
-			);
-			name = SearchBarController;
-			sourceTree = "<group>";
-		};
 		2C83FE751D52898400DB1F86 /* ProductViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +297,7 @@
 		2CECA8241D6232F400365570 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CECA82A1D62356200365570 /* DiscountAsciiWerehouse-Bridging-Header.h */,
 				2CECA8251D62332600365570 /* CacheModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
@@ -326,6 +312,14 @@
 				2CECA83A1D6252E400365570 /* CacheObject.m */,
 			);
 			name = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		2CECA83E1D63CD4B00365570 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CECA83F1D63CD5F00365570 /* ErrorView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,10 +456,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CECA8211D62298A00365570 /* CustomCache.swift in Sources */,
-				2C83FE6A1D525B5700DB1F86 /* ASCCustomSearchBar.swift in Sources */,
 				2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */,
 				2C83FE5D1D5118E100DB1F86 /* ASCServerSettings.swift in Sources */,
-				2C9EFD141D55282300F7E106 /* CustomBarDelegate.swift in Sources */,
 				2C83FE5F1D51191D00DB1F86 /* ASCUrlBuilder.swift in Sources */,
 				2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */,
 				2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */,
@@ -474,7 +466,6 @@
 				2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */,
 				2C83FE421D4F825300DB1F86 /* ASCProductsGridViewController.swift in Sources */,
 				2C83FE5B1D510BED00DB1F86 /* NDJSONParser.swift in Sources */,
-				2C83FE6C1D525D8D00DB1F86 /* ASCCustomSearchController.swift in Sources */,
 				2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */,
 				2CECA81B1D5CF32300365570 /* String+Extension.swift in Sources */,
 				2C83FE621D522AA000DB1F86 /* ASCProductsAPI.swift in Sources */,
@@ -483,6 +474,7 @@
 				2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */,
 				2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */,
 				2CECA8271D62332600365570 /* CacheModel.xcdatamodeld in Sources */,
+				2CECA8401D63CD5F00365570 /* ErrorView.swift in Sources */,
 				2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */,
 				2CECA83B1D6252E400365570 /* CacheObject+CoreDataProperties.m in Sources */,
 				2C83FE591D50142D00DB1F86 /* Error.swift in Sources */,

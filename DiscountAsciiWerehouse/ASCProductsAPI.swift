@@ -21,9 +21,12 @@ class ASCProductsAPI {
                                                PARAM.OnlyInStock: onlyStock,
                                                PARAM.Skip: skip]
         
-        if searchText != nil {
-            let encodedSearchText = String(htmlEncodedString: searchText!)
-            parameters[PARAM.SearchTerm] = encodedSearchText
+        
+        if let searchString = searchText {
+            if searchString.stringByReplacingOccurrencesOfString(" ", withString: "") != "" {
+                let encodedSearchText = String(htmlEncodedString: searchString)
+                parameters[PARAM.SearchTerm] = encodedSearchText
+            }
         }
         
         let url = specifyParametersForUrl(parameters)

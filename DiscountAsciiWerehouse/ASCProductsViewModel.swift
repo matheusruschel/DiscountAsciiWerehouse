@@ -18,7 +18,7 @@ class ASCProductsViewModel {
     
     weak var delegate: ProductCoordinatorDelegate?
     private let productsController = ASCProductsFetchingController()
-    var products: [ASCProduct]?
+    private var products: [ASCProduct]?
     var numberOfItemsInSection: Int {
         if let productsList = products {
             
@@ -27,7 +27,7 @@ class ASCProductsViewModel {
             }
             return productsList.count
         }
-        return 0
+        return 1
     }
     var showLoadingCell = true
     
@@ -35,6 +35,7 @@ class ASCProductsViewModel {
         
         // eliminates cases like phrases with only blank spaces
         if let searchText = searchText {
+            
             if searchText != "" && searchText.stringByReplacingOccurrencesOfString(" ", withString: "") == "" {
                 return false
             }
@@ -54,32 +55,31 @@ class ASCProductsViewModel {
             
             statusCallBack in
             
-            dispatch_async(dispatch_get_main_queue(), {
+            do {
+                let status = try statusCallBack()
                 
-                do {
-                    let status = try statusCallBack()
+                switch status {
+                case .LoadedNewProducts(let newProducts):       self.products = newProducts
+                                                                self.showLoadingCell = true
+                case .NoResultsFound:
+                                                                self.products = nil
+                                                                self.showLoadingCell = false
+                case .ReachedLimit(let newProducts):
                     
-                    switch status {
-                    case .LoadedNewProducts(let newProducts):       self.products = newProducts
-                                                                    self.showLoadingCell = true
-                    case .NoResultsFound:
-                                                                    self.products = nil
-                                                                    self.showLoadingCell = false
-                    case .ReachedLimit(let newProducts):
-                        
-                        if newProducts.count != 0 {
-                            self.products = newProducts
-                        } 
-                        self.showLoadingCell = false
+                    if newProducts.count != 0 {
+                        self.products = newProducts
                     }
-                    
-                    self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
-                } catch let error as NSError {
-                    self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: false, errorMsg: error.localizedDescription)
+                    self.showLoadingCell = false
                 }
-            })
+                
+                self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: true, errorMsg: nil)
+            } catch let error as NSError {
+                self.showLoadingCell = true
+                self.delegate?.coordinatorDidFinishLoadingProducts(self, sucess: false, errorMsg: error.localizedDescription)
+            }
             
         }
+        
 
         
     }

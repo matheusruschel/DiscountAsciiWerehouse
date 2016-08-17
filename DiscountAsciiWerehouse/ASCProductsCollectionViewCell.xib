@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,22 +15,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="212" height="132"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eta-NE-sj1">
-                        <rect key="frame" x="0.0" y="0.0" width="212" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="212" height="105.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbO-ss-Kxf">
+                        <rect key="frame" x="0.0" y="103" width="212" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="MbO-ss-Kxf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1Ol-Hq-8z1"/>
                 <constraint firstItem="Eta-NE-sj1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8aV-M0-0vy"/>
+                <constraint firstItem="MbO-ss-Kxf" firstAttribute="top" secondItem="Eta-NE-sj1" secondAttribute="bottom" constant="-2.5" id="91f-Zb-14P"/>
+                <constraint firstItem="Eta-NE-sj1" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="99B-Vx-7FC"/>
                 <constraint firstAttribute="bottom" secondItem="Eta-NE-sj1" secondAttribute="bottom" id="AAm-fQ-VJY"/>
+                <constraint firstAttribute="trailing" secondItem="MbO-ss-Kxf" secondAttribute="trailing" id="KG4-Hj-6kh"/>
                 <constraint firstItem="Eta-NE-sj1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gXH-4e-rM7"/>
                 <constraint firstAttribute="trailing" secondItem="Eta-NE-sj1" secondAttribute="trailing" id="wuF-hP-XsU"/>
+                <constraint firstAttribute="bottom" secondItem="MbO-ss-Kxf" secondAttribute="bottom" id="wuH-ij-zPS"/>
             </constraints>
             <size key="customSize" width="212" height="132"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="AAm-fQ-VJY"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="priceLabel" destination="MbO-ss-Kxf" id="R3i-q9-k9g"/>
                 <outlet property="textLabel" destination="Eta-NE-sj1" id="DCR-Ps-Wxu"/>
             </connections>
             <point key="canvasLocation" x="275" y="364"/>
