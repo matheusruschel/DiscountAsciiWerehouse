@@ -8,10 +8,7 @@
 
 import Foundation
 
-
-typealias ProductsCompletionBlock = (() throws -> [ASCProduct]) -> Void
-
-class ASCProductsAPI {
+class ASCProductsAPI : ProductsAPIProtocol {
     
     let api = ASCAPICommunicationModel()
 
@@ -34,7 +31,7 @@ class ASCProductsAPI {
         
     }
     
-    private func specifyParametersForUrl(parameters:[PARAM:AnyObject]) -> NSURL {
+    internal func specifyParametersForUrl(parameters:[PARAM:AnyObject]) -> NSURL {
         
         let url = ASCUrlBuilder.buildUrl(forParameters: parameters)
         guard let urlUw = url else {
@@ -44,7 +41,7 @@ class ASCProductsAPI {
     }
     
     
-    private func fetchProductsOnline(url: NSURL, completion: ProductsCompletionBlock) {
+    internal func fetchProductsOnline(url: NSURL, completion: ProductsCompletionBlock) {
         
         api.fetchData(url) { callback in
             

@@ -8,34 +8,32 @@
 
 import Foundation
 
-typealias ProductControllerStatusCompletionBlock = (() throws -> ProductControllerResult) -> Void
-
 enum ProductControllerResult {
     case LoadedNewProducts(products: [ASCProduct])
     case NoResultsFound
     case ReachedLimit(products: [ASCProduct])
 }
 
-class ASCProductsFetchingController {
+class ASCProductsFetchingController : ASCProductsFetchingControllerProtocol {
     
-    var productsAPI = ASCProductsAPI()
-    private var paginatedProducts: [ASCProduct] = []
-    private var onlyInStock: Bool! {
+    let productsAPI = ASCProductsAPI()
+    internal var paginatedProducts: [ASCProduct] = []
+    internal var onlyInStock: Bool! {
         willSet {
                 if onlyInStock != newValue {
                     refresh = true
                 }
         }
     }
-    private var searchText: String? {
+    internal var searchText: String? {
         willSet {
                 if searchText != newValue {
                     refresh = true
                 }
         }
     }
-    private var refresh = false
-    private let requestLimit = 10
+    internal var refresh = false
+    internal let requestLimit = 10
     
     
     func fetchProducts(searchText: String?, onlyStock:Bool,forceRefresh: Bool, completion:ProductControllerStatusCompletionBlock) {

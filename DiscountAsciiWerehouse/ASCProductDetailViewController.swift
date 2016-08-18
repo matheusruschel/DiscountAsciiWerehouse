@@ -77,12 +77,11 @@ class ASCProductDetailViewController: UIViewController {
         cancelButton.setImage(tintedImage, forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         
-        
         buyButton.backgroundColor = UIColor.grayColor()
         buyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         buyButton.titleLabel!.font = UIFont.appFontWithSize(30)
-        
         buyButton.addTarget(self, action: #selector(buttonHighlight), forControlEvents: .TouchDown)
+        
         priceLabel.font = UIFont.appFontWithSize(20)
         
         productFaceLabel.font = UIFont.appFontWithSize(50)

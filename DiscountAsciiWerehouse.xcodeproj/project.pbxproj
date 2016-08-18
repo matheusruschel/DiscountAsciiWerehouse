@@ -18,7 +18,7 @@
 		2C83FE471D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */; };
 		2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */; };
 		2C83FE501D4F94D600DB1F86 /* ASCProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */; };
-		2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE511D4F966D00DB1F86 /* Wrapper.swift */; };
+		2C83FE521D4F966D00DB1F86 /* Wrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE511D4F966D00DB1F86 /* Wrappable.swift */; };
 		2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE541D4F9EE000DB1F86 /* ASCProductsViewModel.swift */; };
 		2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */; };
 		2C83FE591D50142D00DB1F86 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE581D50142D00DB1F86 /* Error.swift */; };
@@ -31,6 +31,10 @@
 		2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */; };
 		2C83FE791D52954C00DB1F86 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */; };
 		2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */; };
+		2CA7C44B1D661A7C0033C58B /* CacheDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C44A1D661A7C0033C58B /* CacheDescriptor.swift */; };
+		2CA7C44D1D663FE90033C58B /* CustomCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C44C1D663FE90033C58B /* CustomCacheProtocol.swift */; };
+		2CA7C44F1D66438B0033C58B /* URLBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C44E1D66438B0033C58B /* URLBuilderProtocol.swift */; };
+		2CA7C4511D6643E20033C58B /* APIProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C4501D6643E20033C58B /* APIProtocols.swift */; };
 		2CECA81B1D5CF32300365570 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA81A1D5CF32300365570 /* String+Extension.swift */; };
 		2CECA8211D62298A00365570 /* CustomCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8201D62298A00365570 /* CustomCache.swift */; };
 		2CECA8271D62332600365570 /* CacheModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8251D62332600365570 /* CacheModel.xcdatamodeld */; };
@@ -76,7 +80,7 @@
 		2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCProductsCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProduct.swift; sourceTree = "<group>"; };
-		2C83FE511D4F966D00DB1F86 /* Wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		2C83FE511D4F966D00DB1F86 /* Wrappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrappable.swift; sourceTree = "<group>"; };
 		2C83FE541D4F9EE000DB1F86 /* ASCProductsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsViewModel.swift; sourceTree = "<group>"; };
 		2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAPICommunicationModel.swift; sourceTree = "<group>"; };
 		2C83FE581D50142D00DB1F86 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -89,6 +93,10 @@
 		2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductDetailViewController.swift; sourceTree = "<group>"; };
 		2C83FE781D52954C00DB1F86 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsFetchingController.swift; sourceTree = "<group>"; };
+		2CA7C44A1D661A7C0033C58B /* CacheDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDescriptor.swift; sourceTree = "<group>"; };
+		2CA7C44C1D663FE90033C58B /* CustomCacheProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCacheProtocol.swift; sourceTree = "<group>"; };
+		2CA7C44E1D66438B0033C58B /* URLBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuilderProtocol.swift; sourceTree = "<group>"; };
+		2CA7C4501D6643E20033C58B /* APIProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocols.swift; sourceTree = "<group>"; };
 		2CECA81A1D5CF32300365570 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2CECA8201D62298A00365570 /* CustomCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCache.swift; sourceTree = "<group>"; };
 		2CECA8261D62332600365570 /* CacheModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CacheModel.xcdatamodel; sourceTree = "<group>"; };
@@ -152,11 +160,12 @@
 		2C83FE101D4F7BB900DB1F86 /* DiscountAsciiWerehouse */ = {
 			isa = PBXGroup;
 			children = (
-				2CECA83E1D63CD4B00365570 /* View */,
 				2C83FE4C1D4F8DEA00DB1F86 /* Util */,
+				2C83FE601D52225100DB1F86 /* Protocol */,
 				2C83FE3F1D4F7FE800DB1F86 /* Model */,
 				2C83FE531D4F9E8300DB1F86 /* ViewModel */,
 				2C83FE401D4F800500DB1F86 /* ViewController */,
+				2CECA83E1D63CD4B00365570 /* View */,
 				2C83FE111D4F7BB900DB1F86 /* AppDelegate.swift */,
 				2C83FE151D4F7BB900DB1F86 /* Main.storyboard */,
 				2C83FE181D4F7BB900DB1F86 /* Assets.xcassets */,
@@ -188,6 +197,8 @@
 		2C83FE3F1D4F7FE800DB1F86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CA7C4531D6644590033C58B /* Settings */,
+				2CA7C4521D66444A0033C58B /* URLBuilder */,
 				2CECA8361D6252CC00365570 /* CoreDataModel */,
 				2CECA81F1D62296700365570 /* Cache */,
 				2C83FE631D522AA800DB1F86 /* API */,
@@ -229,7 +240,6 @@
 		2C83FE4C1D4F8DEA00DB1F86 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE601D52225100DB1F86 /* Protocol */,
 				2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */,
 				2C83FE581D50142D00DB1F86 /* Error.swift */,
 				2C83FE5A1D510BED00DB1F86 /* NDJSONParser.swift */,
@@ -250,7 +260,11 @@
 		2C83FE601D52225100DB1F86 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE511D4F966D00DB1F86 /* Wrapper.swift */,
+				2C83FE511D4F966D00DB1F86 /* Wrappable.swift */,
+				2CA7C44A1D661A7C0033C58B /* CacheDescriptor.swift */,
+				2CA7C44C1D663FE90033C58B /* CustomCacheProtocol.swift */,
+				2CA7C44E1D66438B0033C58B /* URLBuilderProtocol.swift */,
+				2CA7C4501D6643E20033C58B /* APIProtocols.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -258,10 +272,8 @@
 		2C83FE631D522AA800DB1F86 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				2C83FE5E1D51191D00DB1F86 /* ASCUrlBuilder.swift */,
-				2C83FE5C1D5118E100DB1F86 /* ASCServerSettings.swift */,
-				2C83FE611D522AA000DB1F86 /* ASCProductsAPI.swift */,
 				2C83FE561D4FA27800DB1F86 /* ASCAPICommunicationModel.swift */,
+				2C83FE611D522AA000DB1F86 /* ASCProductsAPI.swift */,
 				2C83FE7C1D54C70900DB1F86 /* ASCProductsFetchingController.swift */,
 			);
 			name = API;
@@ -273,6 +285,22 @@
 				2C83FE761D5289CF00DB1F86 /* ASCProductDetailViewController.swift */,
 			);
 			name = ProductViewController;
+			sourceTree = "<group>";
+		};
+		2CA7C4521D66444A0033C58B /* URLBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE5E1D51191D00DB1F86 /* ASCUrlBuilder.swift */,
+			);
+			name = URLBuilder;
+			sourceTree = "<group>";
+		};
+		2CA7C4531D6644590033C58B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2C83FE5C1D5118E100DB1F86 /* ASCServerSettings.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		2CECA81F1D62296700365570 /* Cache */ = {
@@ -447,7 +475,9 @@
 				2CECA8211D62298A00365570 /* CustomCache.swift in Sources */,
 				2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */,
 				2C83FE5D1D5118E100DB1F86 /* ASCServerSettings.swift in Sources */,
+				2CA7C44B1D661A7C0033C58B /* CacheDescriptor.swift in Sources */,
 				2C83FE5F1D51191D00DB1F86 /* ASCUrlBuilder.swift in Sources */,
+				2CA7C44F1D66438B0033C58B /* URLBuilderProtocol.swift in Sources */,
 				2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */,
 				2CECA83C1D6252E400365570 /* CacheObject.m in Sources */,
 				2CECA8341D6244CB00365570 /* NSData+Extension.swift in Sources */,
@@ -457,15 +487,17 @@
 				2C83FE121D4F7BB900DB1F86 /* AppDelegate.swift in Sources */,
 				2CECA81B1D5CF32300365570 /* String+Extension.swift in Sources */,
 				2C83FE621D522AA000DB1F86 /* ASCProductsAPI.swift in Sources */,
-				2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */,
+				2C83FE521D4F966D00DB1F86 /* Wrappable.swift in Sources */,
 				2C83FE661D52557E00DB1F86 /* ASCLoadingCollectionViewCell.swift in Sources */,
 				2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */,
 				2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */,
 				2CECA8271D62332600365570 /* CacheModel.xcdatamodeld in Sources */,
+				2CA7C4511D6643E20033C58B /* APIProtocols.swift in Sources */,
 				2CECA8401D63CD5F00365570 /* MessegeView.swift in Sources */,
 				2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */,
 				2CECA83B1D6252E400365570 /* CacheObject+CoreDataProperties.m in Sources */,
 				2C83FE591D50142D00DB1F86 /* Error.swift in Sources */,
+				2CA7C44D1D663FE90033C58B /* CustomCacheProtocol.swift in Sources */,
 				2C83FE791D52954C00DB1F86 /* UIFont+Extension.swift in Sources */,
 				2C83FE501D4F94D600DB1F86 /* ASCProduct.swift in Sources */,
 			);

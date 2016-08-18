@@ -8,11 +8,7 @@
 
 import Foundation
 
-enum PARAM : String {
-    case SearchTerm = "q", Skip = "skip", OnlyInStock = "onlyInStock", Limit = "limit"
-}
-
-class ASCUrlBuilder {
+class ASCUrlBuilder : URLBuilderProtocol {
     
     class func buildUrl(forParameters parameters:[PARAM:AnyObject]) -> NSURL? {
         
@@ -28,7 +24,7 @@ class ASCUrlBuilder {
         return NSURL(string: finalUrl)
     }
     
-    private class func getPartialUrlForParameter(paramType: PARAM, value:AnyObject) -> String {
+    internal class func getPartialUrlForParameter(paramType: PARAM, value:AnyObject) -> String {
         
         // checks for valid value for key
         switch paramType {

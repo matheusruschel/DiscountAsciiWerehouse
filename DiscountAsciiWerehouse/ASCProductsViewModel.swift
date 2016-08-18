@@ -10,15 +10,12 @@ import Foundation
 
 enum FetchStatus {
     case LoadedNewProducts, NoResultsFound(msg:String), ReachedLimit(msg:String), Error(msg:String)
-    
 }
 
 protocol ProductCoordinatorDelegate : class {
-    
     func coordinatorDidFinishLoadingProducts(viewModel: ASCProductsViewModel, status:FetchStatus)
     func coordinatorDidStartSearching(viewModel: ASCProductsViewModel)
 }
-
 
 class ASCProductsViewModel {
     
@@ -36,7 +33,10 @@ class ASCProductsViewModel {
         }
         return listSize
     }
-    var showLoadingCell = true
+    private var showLoadingCell = true
+    private var loadCellButtonEnabled = false
+    var loadCellButtonIsEnabled:Bool {return loadCellButtonEnabled }
+    var showLoadingCellIsEnabled:Bool {return showLoadingCell}
     
     func validateSearchText(searchText: String?) -> Bool {
         
@@ -54,11 +54,13 @@ class ASCProductsViewModel {
     func prepareToLoadWithNewParameters() {
         self.products?.removeAll()
         showLoadingCell = true
+        loadCellButtonEnabled = false
     }
     
     func loadProducts(searchText: String?, onlyInStock: Bool,forceRefresh:Bool) {
         
         showLoadingCell = true
+        loadCellButtonEnabled = false
         self.delegate?.coordinatorDidStartSearching(self)
         productsController.fetchProducts(searchText, onlyStock: onlyInStock,forceRefresh:forceRefresh) {
             
@@ -72,15 +74,18 @@ class ASCProductsViewModel {
                 case .LoadedNewProducts(let newProducts):
                                                                 self.products = newProducts
                                                                 self.showLoadingCell = true
+                                                                self.loadCellButtonEnabled = false
                                                                 delegateStatus = .LoadedNewProducts
                 case .NoResultsFound:
                                                                 self.products = nil
                                                                 self.showLoadingCell = true
+                                                                self.loadCellButtonEnabled = true
                                                                 delegateStatus = .NoResultsFound(msg: "No results found!")
                 case .ReachedLimit(let newProducts):
                     
                                                                 self.products = newProducts
                                                                 self.showLoadingCell = false
+                                                                self.loadCellButtonEnabled = false
                                                                 delegateStatus = .ReachedLimit(msg: "Finished loading!")
                 }
                 
@@ -89,6 +94,7 @@ class ASCProductsViewModel {
             } catch _ {
                 
                 self.showLoadingCell = true
+                self.loadCellButtonEnabled = true
                 self.delegate?.coordinatorDidFinishLoadingProducts(self, status: .Error(msg: "Oops, something went wrong..."))
             }
             

@@ -26,9 +26,7 @@ class ASCProductsGridViewController: UIViewController {
     var searchBarBoundsY: CGFloat!
     var inStockLabel: UILabel!
     var inStockButton: UIButton!
-    var onlyInStockSelectedChanged = false
     var viewAlert: MessegeView!
-    var loadCellButtonEnabled = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +45,6 @@ class ASCProductsGridViewController: UIViewController {
     func checkboxToggle() {
         self.inStockButton.selected = !self.inStockButton.selected
         loadProductsByChangingParameters()
-        
     }
     
     // MARK: UI Configuration
@@ -197,7 +194,6 @@ class ASCProductsGridViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == productDetailSegue {
-            
             if let destVC = segue.destinationViewController as? ASCProductDetailViewController {
                 
                 if let cell = sender as? ASCProductsCollectionViewCell {
@@ -216,12 +212,10 @@ class ASCProductsGridViewController: UIViewController {
         // validates search string
         if self.productsViewModel.validateSearchText(searchBar.text) {
             self.productsViewModel.prepareToLoadWithNewParameters()
-            loadCellButtonEnabled = false
             dispatch_async(dispatch_get_main_queue(), {
                 self.productsCollectionView.reloadData()
             })
         }
-
     }
     
     func loadMoreProducts() {
@@ -239,7 +233,6 @@ class ASCProductsGridViewController: UIViewController {
         self.removeObservers()
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -254,7 +247,7 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
         
         var numberOfItemsInSection = productsViewModel.numberOfItemsInSection
         
-        if productsViewModel.showLoadingCell {
+        if productsViewModel.showLoadingCellIsEnabled {
             numberOfItemsInSection -= 1
         }
         
@@ -275,7 +268,7 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
         var cell : UICollectionViewCell?
         var numberOfItemsInSection = productsViewModel.numberOfItemsInSection
         
-        if productsViewModel.showLoadingCell {
+        if productsViewModel.showLoadingCellIsEnabled {
             numberOfItemsInSection -= 1
         }
         
@@ -287,7 +280,7 @@ extension ASCProductsGridViewController : UICollectionViewDelegate, UICollection
             cell = collectionView.dequeueReusableCellWithReuseIdentifier(loadingCellIdentifier, forIndexPath: indexPath) as! ASCLoadingCollectionViewCell
             (cell as! ASCLoadingCollectionViewCell).delegate = self
             
-            if loadCellButtonEnabled {
+            if productsViewModel.loadCellButtonIsEnabled {
                 (cell as! ASCLoadingCollectionViewCell).switchMode(.LoadMore)
             } else {
                 (cell as! ASCLoadingCollectionViewCell).switchMode(.Spinner)
@@ -315,7 +308,6 @@ extension ASCProductsGridViewController : LoadingCellDelegate {
     
     func buttonLoadMoreClicked(cell:ASCLoadingCollectionViewCell) {
         productsViewModel.loadProducts(searchBar.text,onlyInStock: inStockButton.selected,forceRefresh: false)
-        loadCellButtonEnabled = false
     }
 }
 
@@ -329,14 +321,11 @@ extension ASCProductsGridViewController : ProductCoordinatorDelegate {
             switch status {
             case .NoResultsFound(let msg):
                 self.showAlertView(msg,kind: .Neutral)
-                self.loadCellButtonEnabled = true
             case .Error(let msg):
                 self.showAlertView(msg,kind: .Negative)
-                self.loadCellButtonEnabled = true
             case .ReachedLimit(let msg):
-                self.loadCellButtonEnabled = false
                 self.showAlertView(msg,kind: .Positive)
-            default: self.loadCellButtonEnabled = false
+            default: break
             }
     
         })

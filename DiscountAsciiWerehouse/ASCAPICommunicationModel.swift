@@ -8,15 +8,13 @@
 
 import Foundation
 
-typealias DataCallbackCompletionBlock =  (() throws -> AnyObject?) -> Void
 
-class ASCAPICommunicationModel: NSObject {
+class ASCAPICommunicationModel: APICommunicationModelProtocol {
     
     var session: NSURLSession!
     var cache: CustomCache<NSData>!
     
-    override init() {
-        super.init()
+     init() {
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         sessionConfig.timeoutIntervalForRequest = 15
         session = NSURLSession(configuration: sessionConfig)

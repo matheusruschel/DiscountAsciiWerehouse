@@ -9,11 +9,6 @@
 import UIKit
 import CoreData
 
-protocol CacheDescriptor {
-    init(data:NSData)
-    func dataForCache() -> NSData
-}
-
 class CustomCache <T: CacheDescriptor> {
 
     private var cacheObjects = [String: T]()
