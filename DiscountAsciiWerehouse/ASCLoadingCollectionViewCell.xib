@@ -16,11 +16,19 @@
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Mag-rc-kNq">
                         <rect key="frame" x="0.0" y="0.0" width="249" height="152"/>
                     </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lV-sk-r3S">
+                        <rect key="frame" x="10" y="0.0" width="229" height="152"/>
+                        <state key="normal" title="Button"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="1lV-sk-r3S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="4q8-Xy-Tg4"/>
+                <constraint firstAttribute="trailing" secondItem="1lV-sk-r3S" secondAttribute="trailing" constant="10" id="CPb-a1-Pku"/>
                 <constraint firstAttribute="trailing" secondItem="Mag-rc-kNq" secondAttribute="trailing" id="IHb-Th-XNr"/>
+                <constraint firstAttribute="bottom" secondItem="1lV-sk-r3S" secondAttribute="bottom" id="UxL-5G-ZJn"/>
+                <constraint firstItem="1lV-sk-r3S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dse-N3-jiw"/>
                 <constraint firstItem="Mag-rc-kNq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eG2-ug-raA"/>
                 <constraint firstItem="Mag-rc-kNq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hPy-wB-hK3"/>
                 <constraint firstAttribute="bottom" secondItem="Mag-rc-kNq" secondAttribute="bottom" id="zhv-8v-egS"/>
@@ -28,6 +36,7 @@
             <size key="customSize" width="249" height="152"/>
             <connections>
                 <outlet property="activityIndicator" destination="Mag-rc-kNq" id="Ats-fS-5zd"/>
+                <outlet property="loadMoreButton" destination="1lV-sk-r3S" id="vPz-te-40C"/>
             </connections>
             <point key="canvasLocation" x="316.5" y="354"/>
         </collectionViewCell>

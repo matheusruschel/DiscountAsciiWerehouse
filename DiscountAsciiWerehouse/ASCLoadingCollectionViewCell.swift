@@ -19,7 +19,7 @@ enum LoadingMode {
 class ASCLoadingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var loadMoreButton: UIButton?
+    @IBOutlet weak var loadMoreButton: UIButton!
     weak var delegate:LoadingCellDelegate?
     var mode:LoadingMode = .Spinner
     
@@ -27,37 +27,21 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.backgroundColor = UIColor(netHex:0xCC4025)
         configureSpinner()
+        configureButtonLoadMore()
         self.switchMode(mode)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addButtonLoadMore()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addButtonLoadMore()
     }
     
     private func configureSpinner() {
         activityIndicator.hidesWhenStopped = true
     }
     
-    func addButtonLoadMore() {
+    func configureButtonLoadMore() {
         
-         loadMoreButton = UIButton(frame:
-            CGRect(
-                x: 0,
-                y: 0,
-                width: frame.width,
-                height: frame.height))
-        loadMoreButton!.setTitle("LOAD MORE", forState: .Normal)
-        loadMoreButton!.hidden = true
-        loadMoreButton!.addTarget(self, action: #selector(loadMoreButtonClicked), forControlEvents: .TouchUpInside)
-        loadMoreButton!.titleLabel!.font = UIFont.appFontWithSize(30)
-        loadMoreButton!.titleLabel!.adjustsFontSizeToFitWidth = true
-        self.addSubview(loadMoreButton!)
+        loadMoreButton.setTitle("LOAD MORE", forState: .Normal)
+        loadMoreButton.hidden = true
+        loadMoreButton.addTarget(self, action: #selector(loadMoreButtonClicked), forControlEvents: .TouchUpInside)
+        loadMoreButton.titleLabel!.font = UIFont.appFontWithSize(30)
+        loadMoreButton.titleLabel!.adjustsFontSizeToFitWidth = true
     }
     
     private func stopLoading() {
@@ -69,6 +53,7 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
     }
     
     func switchMode(mode:LoadingMode) {
+        
         self.mode = mode
         switch mode {
         case .LoadMore:
