@@ -52,7 +52,7 @@ class ASCProductsAPI {
                 let callBackData = try callback()
                 
                 guard let dataList = callBackData as? [AnyObject] else {
-                    completion({ throw Error.JSONNotRecognizedError })
+                    completion({ throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError) })
                     return
                 }
                 
@@ -61,7 +61,7 @@ class ASCProductsAPI {
                     let product = ASCProduct(data:productData)
                     
                     guard let productUw = product else {
-                        throw Error.CouldNotCreateObjectWithDataFile
+                        throw Error.ErrorWithCode(errorCode: .CouldNotCreateObjectWithDataFile)
                     }
                     
                     return productUw
@@ -70,7 +70,7 @@ class ASCProductsAPI {
                 
                 completion({ return list })
                 
-            } catch let error {
+            } catch {
                 completion({throw error})
             }
             

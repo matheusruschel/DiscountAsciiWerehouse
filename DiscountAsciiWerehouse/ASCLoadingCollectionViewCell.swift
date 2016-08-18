@@ -25,6 +25,7 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor(netHex:0xCC4025)
         configureSpinner()
         self.switchMode(mode)
     }
@@ -51,9 +52,11 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
                 y: 0,
                 width: frame.width,
                 height: frame.height))
-        loadMoreButton!.setTitle("Load More", forState: .Normal)
+        loadMoreButton!.setTitle("LOAD MORE", forState: .Normal)
         loadMoreButton!.hidden = true
         loadMoreButton!.addTarget(self, action: #selector(loadMoreButtonClicked), forControlEvents: .TouchUpInside)
+        loadMoreButton!.titleLabel!.font = UIFont.appFontWithSize(30)
+        loadMoreButton!.titleLabel!.adjustsFontSizeToFitWidth = true
         self.addSubview(loadMoreButton!)
     }
     
@@ -73,7 +76,7 @@ class ASCLoadingCollectionViewCell: UICollectionViewCell {
             loadMoreButton?.hidden = false
             stopLoading()
         case .Spinner:
-            self.backgroundColor = UIColor.lightGrayColor()
+            //self.backgroundColor = UIColor.lightGrayColor()
             loadMoreButton?.hidden = true
             startLoading()
         }

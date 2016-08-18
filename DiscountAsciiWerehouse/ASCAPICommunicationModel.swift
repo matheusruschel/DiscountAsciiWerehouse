@@ -33,7 +33,7 @@ class ASCAPICommunicationModel: NSObject {
                 let ndJsonParser = NDJSONParser(data:cacheObject.dataForCache())
                 
                 if ndJsonParser == nil {
-                    completion({throw Error.JSONNotRecognizedError})
+                    completion({throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError)})
                 } else {
                     completion({return ndJsonParser!.content })
                 }
@@ -62,12 +62,18 @@ class ASCAPICommunicationModel: NSObject {
                 if let ndJsonParser = NDJSONParser(data:data!) {
                     completion({return ndJsonParser.content })
                 } else {
-                    completion({throw Error.JSONNotRecognizedError})
+                    completion({throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError)})
                 }
                 
                 
             } else {
-                completion({ throw Error.ErrorWithMsg(msg: error!.localizedDescription) })
+                let error = ErrorHandler.handleErrorFromServer(error!.code)
+                
+                switch error {
+                case .ErrorWithCode(let errorCode): if errorCode != .CanceledTask { fallthrough }
+                default: completion({ throw error})
+                }
+                
             }
             
         }

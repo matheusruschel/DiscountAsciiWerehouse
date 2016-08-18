@@ -16,7 +16,6 @@
 		2C83FE421D4F825300DB1F86 /* ASCProductsGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */; };
 		2C83FE461D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */; };
 		2C83FE471D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */; };
-		2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */; };
 		2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */; };
 		2C83FE501D4F94D600DB1F86 /* ASCProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */; };
 		2C83FE521D4F966D00DB1F86 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83FE511D4F966D00DB1F86 /* Wrapper.swift */; };
@@ -39,7 +38,7 @@
 		2CECA8341D6244CB00365570 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8331D6244CB00365570 /* NSData+Extension.swift */; };
 		2CECA83B1D6252E400365570 /* CacheObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA8381D6252E400365570 /* CacheObject+CoreDataProperties.m */; };
 		2CECA83C1D6252E400365570 /* CacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA83A1D6252E400365570 /* CacheObject.m */; };
-		2CECA8401D63CD5F00365570 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA83F1D63CD5F00365570 /* ErrorView.swift */; };
+		2CECA8401D63CD5F00365570 /* MessegeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECA83F1D63CD5F00365570 /* MessegeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +74,6 @@
 		2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsGridViewController.swift; sourceTree = "<group>"; };
 		2C83FE441D4F84A400DB1F86 /* ASCProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C83FE451D4F84A400DB1F86 /* ASCProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCProductsCollectionViewCell.xib; sourceTree = "<group>"; };
-		2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2C83FE4D1D4F8E0C00DB1F86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2C83FE4F1D4F94D600DB1F86 /* ASCProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProduct.swift; sourceTree = "<group>"; };
 		2C83FE511D4F966D00DB1F86 /* Wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
@@ -101,7 +99,7 @@
 		2CECA8381D6252E400365570 /* CacheObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CacheObject+CoreDataProperties.m"; path = "../CacheObject+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2CECA8391D6252E400365570 /* CacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheObject.h; path = ../CacheObject.h; sourceTree = "<group>"; };
 		2CECA83A1D6252E400365570 /* CacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CacheObject.m; path = ../CacheObject.m; sourceTree = "<group>"; };
-		2CECA83F1D63CD5F00365570 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		2CECA83F1D63CD5F00365570 /* MessegeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessegeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +211,6 @@
 			children = (
 				2C83FE411D4F825300DB1F86 /* ASCProductsGridViewController.swift */,
 				2C83FE481D4F84AF00DB1F86 /* Cell */,
-				2C83FE491D4F8C2900DB1F86 /* Layout */,
 			);
 			name = ProductsGridCollectionViewController;
 			sourceTree = "<group>";
@@ -227,14 +224,6 @@
 				2C83FE651D52557E00DB1F86 /* ASCLoadingCollectionViewCell.xib */,
 			);
 			name = Cell;
-			sourceTree = "<group>";
-		};
-		2C83FE491D4F8C2900DB1F86 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				2C83FE4A1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift */,
-			);
-			name = Layout;
 			sourceTree = "<group>";
 		};
 		2C83FE4C1D4F8DEA00DB1F86 /* Util */ = {
@@ -317,7 +306,7 @@
 		2CECA83E1D63CD4B00365570 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2CECA83F1D63CD5F00365570 /* ErrorView.swift */,
+				2CECA83F1D63CD5F00365570 /* MessegeView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -459,7 +448,6 @@
 				2C83FE571D4FA27800DB1F86 /* ASCAPICommunicationModel.swift in Sources */,
 				2C83FE5D1D5118E100DB1F86 /* ASCServerSettings.swift in Sources */,
 				2C83FE5F1D51191D00DB1F86 /* ASCUrlBuilder.swift in Sources */,
-				2C83FE4B1D4F8C4E00DB1F86 /* GridCollectionViewLayout.swift in Sources */,
 				2C83FE7D1D54C70900DB1F86 /* ASCProductsFetchingController.swift in Sources */,
 				2CECA83C1D6252E400365570 /* CacheObject.m in Sources */,
 				2CECA8341D6244CB00365570 /* NSData+Extension.swift in Sources */,
@@ -474,7 +462,7 @@
 				2C83FE4E1D4F8E0C00DB1F86 /* UIColor+Extension.swift in Sources */,
 				2C83FE551D4F9EE000DB1F86 /* ASCProductsViewModel.swift in Sources */,
 				2CECA8271D62332600365570 /* CacheModel.xcdatamodeld in Sources */,
-				2CECA8401D63CD5F00365570 /* ErrorView.swift in Sources */,
+				2CECA8401D63CD5F00365570 /* MessegeView.swift in Sources */,
 				2C83FE771D5289CF00DB1F86 /* ASCProductDetailViewController.swift in Sources */,
 				2CECA83B1D6252E400365570 /* CacheObject+CoreDataProperties.m in Sources */,
 				2C83FE591D50142D00DB1F86 /* Error.swift in Sources */,

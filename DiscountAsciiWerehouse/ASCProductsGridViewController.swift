@@ -27,9 +27,7 @@ class ASCProductsGridViewController: UIViewController {
     var inStockLabel: UILabel!
     var inStockButton: UIButton!
     var onlyInStockSelectedChanged = false
-    var viewError: ErrorView!
-    var errorViewMovement: CGFloat = 30
-    var errorViewIsAnimating = false
+    var viewAlert: MessegeView!
     var loadCellButtonEnabled = false
 
     override func viewDidLoad() {
@@ -57,20 +55,15 @@ class ASCProductsGridViewController: UIViewController {
         configureSearchController()
         configureInStockLabel()
         configureInStockButton()
-        configureErrorView()
+        configureAlertView()
     }
     
-    func configureErrorView() {
+    func configureAlertView() {
         
-        if self.viewError == nil {
-            let y = -errorViewMovement
-            
-            self.viewError = ErrorView(frame: CGRect(
-                x: 0,
-                y: y,
-                width: UIScreen.mainScreen().bounds.size.width,
-                height: errorViewMovement))
-            self.view.addSubview(self.viewError)
+        if self.viewAlert == nil {
+            let width = UIScreen.mainScreen().bounds.size.width
+            self.viewAlert = MessegeView(frame:CGRectMake(0.0,-30,width,30))
+            self.view.addSubview(self.viewAlert)
         }
         
     }
@@ -86,8 +79,10 @@ class ASCProductsGridViewController: UIViewController {
                 height: self.inStockLabel.frame.height))
             
             self.inStockButton.setImage(UIImage(named:"unchecked_checkbox"), forState: .Normal)
-            self.inStockButton.setImage(UIImage(named:"checked_checkbox"), forState: .Selected)
-            
+            let checkedCheckboxImage = UIImage(named: "checked_checkbox")
+            let tintedCheckedCheckboxImage = checkedCheckboxImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            self.inStockButton.setImage(tintedCheckedCheckboxImage, forState: .Selected)
+            self.inStockButton.tintColor =  UIColor(netHex:0xCC4025)
             self.inStockButton.addTarget(self, action: #selector(checkboxToggle), forControlEvents: .TouchUpInside)
             
             self.view.addSubview(self.inStockButton)
@@ -146,26 +141,11 @@ class ASCProductsGridViewController: UIViewController {
     
     // MARK: Show error view
     
-    func showErrorView(msg: String) {
+    func showAlertView(msg: String, kind:KindOfAlert) {
         
-        if !self.errorViewIsAnimating {
-            
-            self.viewError.errorLabel.text = msg
-            self.errorViewIsAnimating = true
-
-            UIView.animateWithDuration(0.5, delay: 0.0, options: [.CurveEaseInOut], animations: { Void in
-                self.viewError.transform = CGAffineTransformMakeTranslation(0, self.errorViewMovement)
-                
-                },completion: { _ in
-                    
-                    UIView.animateWithDuration(0.5, delay: 1.5, options: [.CurveEaseInOut], animations: { Void in
-                        self.viewError.transform = CGAffineTransformMakeTranslation(0, 0)
-                    
-                        },completion: { bool in
-                    
-                            self.errorViewIsAnimating = false
-                        })
-            })
+        if !self.viewAlert.alertIsAnimating() {
+            self.viewAlert.changeAlert(msg, kind: kind)
+            self.viewAlert.animate()
         }
     }
 
@@ -235,7 +215,7 @@ class ASCProductsGridViewController: UIViewController {
         
         // validates search string
         if self.productsViewModel.validateSearchText(searchBar.text) {
-            self.productsViewModel.clearProductsList()
+            self.productsViewModel.prepareToLoadWithNewParameters()
             loadCellButtonEnabled = false
             dispatch_async(dispatch_get_main_queue(), {
                 self.productsCollectionView.reloadData()
@@ -347,11 +327,15 @@ extension ASCProductsGridViewController : ProductCoordinatorDelegate {
             self.productsCollectionView.reloadData()
             
             switch status {
-            case .NoResultsFound:
+            case .NoResultsFound(let msg):
+                self.showAlertView(msg,kind: .Neutral)
                 self.loadCellButtonEnabled = true
             case .Error(let msg):
-                self.showErrorView(msg)
+                self.showAlertView(msg,kind: .Negative)
                 self.loadCellButtonEnabled = true
+            case .ReachedLimit(let msg):
+                self.loadCellButtonEnabled = false
+                self.showAlertView(msg,kind: .Positive)
             default: self.loadCellButtonEnabled = false
             }
     

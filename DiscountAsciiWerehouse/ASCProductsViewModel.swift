@@ -9,7 +9,7 @@
 import Foundation
 
 enum FetchStatus {
-    case LoadedNewProducts, NoResultsFound, ReachedLimit, Error(msg:String)
+    case LoadedNewProducts, NoResultsFound(msg:String), ReachedLimit(msg:String), Error(msg:String)
     
 }
 
@@ -51,8 +51,9 @@ class ASCProductsViewModel {
         
     }
     
-    func clearProductsList() {
+    func prepareToLoadWithNewParameters() {
         self.products?.removeAll()
+        showLoadingCell = true
     }
     
     func loadProducts(searchText: String?, onlyInStock: Bool,forceRefresh:Bool) {
@@ -75,18 +76,20 @@ class ASCProductsViewModel {
                 case .NoResultsFound:
                                                                 self.products = nil
                                                                 self.showLoadingCell = true
-                                                                delegateStatus = .NoResultsFound
+                                                                delegateStatus = .NoResultsFound(msg: "No results found!")
                 case .ReachedLimit(let newProducts):
                     
                                                                 self.products = newProducts
                                                                 self.showLoadingCell = false
-                                                                delegateStatus = .ReachedLimit
+                                                                delegateStatus = .ReachedLimit(msg: "Finished loading!")
                 }
                 
                 self.delegate?.coordinatorDidFinishLoadingProducts(self, status: delegateStatus!)
-            } catch let error as NSError {
+                
+            } catch _ {
+                
                 self.showLoadingCell = true
-                self.delegate?.coordinatorDidFinishLoadingProducts(self, status: .Error(msg: error.localizedDescription))
+                self.delegate?.coordinatorDidFinishLoadingProducts(self, status: .Error(msg: "Oops, something went wrong..."))
             }
             
         }
