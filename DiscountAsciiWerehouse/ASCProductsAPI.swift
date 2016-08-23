@@ -8,38 +8,28 @@
 
 import Foundation
 
-class ASCProductsAPI : ProductsAPIProtocol {
+typealias ProductsCompletionBlock = (() throws -> [ASCProduct]) -> Void
+
+
+class ASCProductsAPI {
     
     let api = ASCAPICommunicationModel()
 
     func fetchProducts(searchText: String?, onlyStock:Bool, skip: Int, limit: Int, completion:ProductsCompletionBlock) {
         
-        var parameters : [PARAM:AnyObject]!  = [PARAM.Limit : limit,
-                                               PARAM.OnlyInStock: onlyStock,
-                                               PARAM.Skip: skip]
-        
-        
-        if let searchString = searchText {
-            if searchString.stringByReplacingOccurrencesOfString(" ", withString: "") != "" {
-                let encodedSearchText = String(htmlEncodedString: searchString).stringByReplacingOccurrencesOfString(" ", withString: "")
-                parameters[PARAM.SearchTerm] = encodedSearchText
-            }
-        }
-        
-        let url = specifyParametersForUrl(parameters)
-        fetchProductsOnline(url,completion: completion)
-        
-    }
-    
-    internal func specifyParametersForUrl(parameters:[PARAM:AnyObject]) -> NSURL {
+        let parameters : [PARAM]!  = [PARAM.Limit(amount: limit),
+                                      PARAM.OnlyInStock(bool: onlyStock),
+                                      PARAM.Skip(amount: skip),
+                                      PARAM.SearchTerm(searchText: searchText)]
         
         let url = ASCUrlBuilder.buildUrl(forParameters: parameters)
         guard let urlUw = url else {
             fatalError("Could not create url")
         }
-        return urlUw
+        
+        fetchProductsOnline(urlUw,completion: completion)
+        
     }
-    
     
     internal func fetchProductsOnline(url: NSURL, completion: ProductsCompletionBlock) {
         
@@ -49,7 +39,7 @@ class ASCProductsAPI : ProductsAPIProtocol {
                 let callBackData = try callback()
                 
                 guard let dataList = callBackData as? [AnyObject] else {
-                    completion({ throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError) })
+                    completion({ throw Error.ErrorWithCode(errorCode: .NDJSONNotRecognizedError) })
                     return
                 }
                 

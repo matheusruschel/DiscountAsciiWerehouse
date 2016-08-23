@@ -36,8 +36,6 @@ extension ASCProduct : Wrappable {
                 return nil
         }
         
-        price
-        
         self.init(id:id, type:type, face:face , size:size, price:price, stock: stock, tags: tags)
     }
     

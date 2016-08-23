@@ -9,7 +9,7 @@
 import Foundation
 
 enum ErrorCode: ErrorType {
-    case CanceledTask, JSONNotRecognizedError, CouldNotCreateObjectWithDataFile, CoreDataAddError
+    case CanceledTask, NDJSONNotRecognizedError, CouldNotCreateObjectWithDataFile, CoreDataAddError
 }
 
 enum Error : ErrorType {

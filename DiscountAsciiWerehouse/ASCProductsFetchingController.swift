@@ -8,13 +8,16 @@
 
 import Foundation
 
+
+typealias ProductControllerStatusCompletionBlock = (() throws -> ProductControllerResult) -> Void
+
 enum ProductControllerResult {
     case LoadedNewProducts(products: [ASCProduct])
     case NoResultsFound
     case ReachedLimit(products: [ASCProduct])
 }
 
-class ASCProductsFetchingController : ASCProductsFetchingControllerProtocol {
+class ASCProductsFetchingController {
     
     let productsAPI = ASCProductsAPI()
     internal var paginatedProducts: [ASCProduct] = []

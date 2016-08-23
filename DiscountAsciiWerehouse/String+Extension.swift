@@ -10,17 +10,13 @@ import Foundation
 import UIKit
 
 extension String {
-    init(htmlEncodedString: String)  {
-        do {
-            let encodedData = htmlEncodedString.dataUsingEncoding(NSUTF8StringEncoding)!
-            let attributedOptions : [String: AnyObject] = [
-                NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
-            ]
-            let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
-            self.init(attributedString.string)
-        } catch {
-            fatalError("Failed to encode string: \(error)")
+    func encodeString() -> String? {
+        
+        if self.stringByReplacingOccurrencesOfString(" ", withString: "") != "" {
+            let encodedSearchText = self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            return encodedSearchText
         }
+        return nil
+        
     }
 }

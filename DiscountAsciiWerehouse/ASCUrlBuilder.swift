@@ -8,49 +8,54 @@
 
 import Foundation
 
-class ASCUrlBuilder : URLBuilderProtocol {
+enum PARAM {
+    case SearchTerm(searchText:String?), Skip(amount:Int), OnlyInStock(bool:Bool), Limit(amount:Int)
+}
+
+class ASCUrlBuilder {
     
-    class func buildUrl(forParameters parameters:[PARAM:AnyObject]) -> NSURL? {
+    class func buildUrl(forParameters parameters:[PARAM]) -> NSURL? {
         
         var finalUrl = ServerUrl
         
         var accessoryForUrl = "?"
-        for (key,value) in parameters {
-            let partialUrl = ASCUrlBuilder.getPartialUrlForParameter(key,value: value)
-            finalUrl.appendContentsOf("\(accessoryForUrl)\(partialUrl)")
-            accessoryForUrl = "&"
+        for value in parameters {
+            
+            if let partialUrl = ASCUrlBuilder.getPartialUrlForParameter(value) {
+                finalUrl.appendContentsOf("\(accessoryForUrl)\(partialUrl)")
+                accessoryForUrl = "&"
+            }
+            
         }
         
         return NSURL(string: finalUrl)
     }
     
-    internal class func getPartialUrlForParameter(paramType: PARAM, value:AnyObject) -> String {
+    internal class func getPartialUrlForParameter(paramType: PARAM) -> String? {
         
-        // checks for valid value for key
         switch paramType {
-        case .SearchTerm:
-            
-        if let valueString = (value as? String) {
-            return "\(paramType.rawValue)=\(valueString)"
-        } else {
-            fatalError("Invalid type for parameter provided")
-        }
-        case .OnlyInStock:
-            
-            if let valueInt = (value as? Int) {
-                return "\(paramType.rawValue)=\(valueInt)"
-            } else {
-                fatalError("Invalid type for parameter provided")
+        case .SearchTerm(let searchText):
+            if let valueString = searchText {
+                if let finalString = valueString.encodeString() {
+                    return "\(SearchParam)=\(finalString)"
+                }
             }
-            
-        case .Limit: fallthrough
-        case .Skip:
-            if let valueInt = value as? Int {
-                return "\(paramType.rawValue)=\(valueInt)"
-            } else {
-                fatalError("Invalid type for parameter provided")
-            }
+            return nil
+        
+        case .OnlyInStock(let bool):
+            let valueInt = Int(bool)
+            return "\(OnlyInStockParam)=\(valueInt)"
 
+        case .Limit(let amount):
+            if amount >= 0 {
+                return "\(LimitParam)=\(amount)"
+            }
+            return nil
+        case .Skip(let amount):
+            if amount >= 0 {
+                return "\(SkipParam)=\(amount)"
+            }
+            return nil
         }
         
         

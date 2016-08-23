@@ -8,8 +8,9 @@
 
 import Foundation
 
+typealias DataCallbackCompletionBlock =  (() throws -> AnyObject?) -> Void
 
-class ASCAPICommunicationModel: APICommunicationModelProtocol {
+class ASCAPICommunicationModel {
     
     var session: NSURLSession!
     var cache: CustomCache<NSData>!
@@ -31,7 +32,7 @@ class ASCAPICommunicationModel: APICommunicationModelProtocol {
                 let ndJsonParser = NDJSONParser(data:cacheObject.dataForCache())
                 
                 if ndJsonParser == nil {
-                    completion({throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError)})
+                    completion({throw Error.ErrorWithCode(errorCode: .NDJSONNotRecognizedError)})
                 } else {
                     completion({return ndJsonParser!.content })
                 }
@@ -50,17 +51,13 @@ class ASCAPICommunicationModel: APICommunicationModelProtocol {
             if error == nil {
                 
                 if let cache = self.cache {
-                    
-                    if data?.length != 0 {
-                        cache[url.absoluteString] = data
-                    }
-                    
+                    cache[url.absoluteString] = data
                 }
                 
                 if let ndJsonParser = NDJSONParser(data:data!) {
                     completion({return ndJsonParser.content })
                 } else {
-                    completion({throw Error.ErrorWithCode(errorCode: .JSONNotRecognizedError)})
+                    completion({throw Error.ErrorWithCode(errorCode: .NDJSONNotRecognizedError)})
                 }
                 
                 
